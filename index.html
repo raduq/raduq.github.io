@@ -30,7 +30,6 @@
     <link rel="icon" type="image/png" href="https://raduq.github.io/img/favicon-16x16.png" sizes="16x16">
 
     <style>
-      /* Dark Mode (Default) */
       :root {
         --bg: #0b1020;
         --bg-soft: #121a2b;
@@ -45,7 +44,76 @@
         --shadow: rgba(30, 41, 59, 0.45);
       }
 
-      /* Light Mode */
+      html.dark-mode {
+        --bg: #070b15;
+        --bg-soft: #101726;
+        --panel: rgba(13, 18, 31, 0.82);
+        --panel-strong: #0d1322;
+        --text: #eaf6ff;
+        --muted: #98a9d0;
+        --primary: #7aa2ff;
+        --primary-strong: #5e87ff;
+        --accent: #8ef0d1;
+        --border: rgba(255,255,255,0.08);
+        --shadow: rgba(0, 0, 0, 0.35);
+      }
+
+      html.dark-mode.neon-cyberpunk {
+        --bg: #070b16;
+        --bg-soft: #10192e;
+        --panel: rgba(12, 17, 33, 0.84);
+        --panel-strong: #0b1428;
+        --text: #eafcff;
+        --muted: #91d7ff;
+        --primary: #ff3bd4;
+        --primary-strong: #8f52ff;
+        --accent: #35f7b0;
+        --border: rgba(0, 255, 255, 0.28);
+        --shadow: rgba(255, 30, 210, 0.24);
+      }
+
+      html.dark-mode.neon-electric {
+        --bg: #050c1d;
+        --bg-soft: #0a1631;
+        --panel: rgba(10, 19, 38, 0.84);
+        --panel-strong: #0a1430;
+        --text: #ebf6ff;
+        --muted: #9dd9ff;
+        --primary: #08b4ff;
+        --primary-strong: #2d6bff;
+        --accent: #5fffe0;
+        --border: rgba(77, 188, 255, 0.28);
+        --shadow: rgba(8, 180, 255, 0.22);
+      }
+
+      html.dark-mode.neon-magenta {
+        --bg: #110914;
+        --bg-soft: #191527;
+        --panel: rgba(22, 14, 31, 0.84);
+        --panel-strong: #1a0f27;
+        --text: #ffe9ff;
+        --muted: #ffadc9;
+        --primary: #ff4ac5;
+        --primary-strong: #ff7e5f;
+        --accent: #7ef9ff;
+        --border: rgba(255, 90, 180, 0.28);
+        --shadow: rgba(255, 74, 197, 0.22);
+      }
+
+      html.dark-mode.neon-aurora {
+        --bg: #081b1a;
+        --bg-soft: #0d2d2d;
+        --panel: rgba(10, 31, 30, 0.84);
+        --panel-strong: #0d2a27;
+        --text: #eafff8;
+        --muted: #8be7d2;
+        --primary: #4ef7d7;
+        --primary-strong: #46b7ff;
+        --accent: #d7ff57;
+        --border: rgba(78, 247, 215, 0.28);
+        --shadow: rgba(78, 247, 215, 0.2);
+      }
+
       html.light-mode {
         --bg: #f8f9fb;
         --bg-soft: #f0f2f7;
@@ -81,6 +149,38 @@
           var(--bg);
       }
 
+      html.dark-mode.neon-cyberpunk body {
+        background:
+          radial-gradient(circle at top left, rgba(255, 59, 212, 0.22), transparent 30%),
+          radial-gradient(circle at bottom right, rgba(53, 247, 176, 0.18), transparent 28%),
+          radial-gradient(circle at center, rgba(140, 82, 255, 0.12), transparent 48%),
+          var(--bg);
+      }
+
+      html.dark-mode.neon-electric body {
+        background:
+          radial-gradient(circle at top left, rgba(8, 180, 255, 0.22), transparent 30%),
+          radial-gradient(circle at bottom right, rgba(95, 255, 224, 0.16), transparent 28%),
+          radial-gradient(circle at center, rgba(45, 107, 255, 0.12), transparent 48%),
+          var(--bg);
+      }
+
+      html.dark-mode.neon-magenta body {
+        background:
+          radial-gradient(circle at top left, rgba(255, 74, 197, 0.22), transparent 30%),
+          radial-gradient(circle at bottom right, rgba(126, 249, 255, 0.16), transparent 28%),
+          radial-gradient(circle at center, rgba(255, 126, 95, 0.12), transparent 48%),
+          var(--bg);
+      }
+
+      html.dark-mode.neon-aurora body {
+        background:
+          radial-gradient(circle at top left, rgba(78, 247, 215, 0.22), transparent 30%),
+          radial-gradient(circle at bottom right, rgba(215, 255, 87, 0.16), transparent 28%),
+          radial-gradient(circle at center, rgba(70, 183, 255, 0.12), transparent 48%),
+          var(--bg);
+      }
+
       a { color: inherit; text-decoration: none; }
       img { max-width: 100%; display: block; }
       .container { width: min(1100px, calc(100% - 2rem)); margin: 0 auto; }
@@ -93,6 +193,26 @@
         background: rgba(11, 16, 32, 0.7);
         border-bottom: 1px solid var(--border);
         transition: background 0.3s ease, border-color 0.3s ease;
+      }
+
+      html.dark-mode.neon-cyberpunk .site-header {
+        background: rgba(8, 12, 24, 0.78);
+        box-shadow: 0 0 18px rgba(255, 59, 212, 0.17);
+      }
+
+      html.dark-mode.neon-electric .site-header {
+        background: rgba(6, 13, 26, 0.78);
+        box-shadow: 0 0 18px rgba(8, 180, 255, 0.17);
+      }
+
+      html.dark-mode.neon-magenta .site-header {
+        background: rgba(22, 11, 23, 0.8);
+        box-shadow: 0 0 18px rgba(255, 74, 197, 0.17);
+      }
+
+      html.dark-mode.neon-aurora .site-header {
+        background: rgba(7, 22, 24, 0.8);
+        box-shadow: 0 0 18px rgba(78, 247, 215, 0.17);
       }
 
       html.light-mode .site-header {
@@ -127,7 +247,8 @@
       }
       .nav-links a:hover { color: var(--text); }
 
-      .theme-toggle {
+      .theme-toggle,
+      .neon-theme-toggle {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -141,19 +262,60 @@
         transition: all 0.2s ease;
         font-size: 0.95rem;
       }
-      .theme-toggle:hover {
+
+      .theme-toggle:hover,
+      .neon-theme-toggle:hover {
         background: rgba(124,156,255,0.15);
         border-color: rgba(124,156,255,0.3);
       }
 
-      html.light-mode .theme-toggle {
+      html.light-mode .theme-toggle,
+      html.light-mode .neon-theme-toggle {
         background: rgba(91,124,255,0.1);
         border-color: rgba(91,124,255,0.2);
         color: var(--primary);
       }
-      html.light-mode .theme-toggle:hover {
+
+      html.light-mode .theme-toggle:hover,
+      html.light-mode .neon-theme-toggle:hover {
         background: rgba(91,124,255,0.15);
         border-color: rgba(91,124,255,0.3);
+      }
+
+      .neon-theme-toggle {
+        display: none;
+      }
+
+      html.dark-mode .neon-theme-toggle {
+        display: flex;
+      }
+
+      html.dark-mode.neon-cyberpunk .neon-theme-toggle {
+        background: rgba(255, 59, 212, 0.12);
+        border-color: rgba(255, 59, 212, 0.38);
+        color: #ff3bd4;
+        box-shadow: 0 0 16px rgba(255, 59, 212, 0.18);
+      }
+
+      html.dark-mode.neon-electric .neon-theme-toggle {
+        background: rgba(8, 180, 255, 0.12);
+        border-color: rgba(8, 180, 255, 0.38);
+        color: #08b4ff;
+        box-shadow: 0 0 16px rgba(8, 180, 255, 0.18);
+      }
+
+      html.dark-mode.neon-magenta .neon-theme-toggle {
+        background: rgba(255, 74, 197, 0.12);
+        border-color: rgba(255, 74, 197, 0.38);
+        color: #ff4ac5;
+        box-shadow: 0 0 16px rgba(255, 74, 197, 0.18);
+      }
+
+      html.dark-mode.neon-aurora .neon-theme-toggle {
+        background: rgba(78, 247, 215, 0.12);
+        border-color: rgba(78, 247, 215, 0.38);
+        color: #4ef7d7;
+        box-shadow: 0 0 16px rgba(78, 247, 215, 0.18);
       }
 
       .hero {
@@ -180,6 +342,30 @@
         transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
       }
 
+      html.dark-mode.neon-cyberpunk .eyebrow {
+        background: rgba(255, 59, 212, 0.1);
+        border-color: rgba(255, 59, 212, 0.28);
+        color: #ff3bd4;
+      }
+
+      html.dark-mode.neon-electric .eyebrow {
+        background: rgba(8, 180, 255, 0.1);
+        border-color: rgba(8, 180, 255, 0.28);
+        color: #08b4ff;
+      }
+
+      html.dark-mode.neon-magenta .eyebrow {
+        background: rgba(255, 74, 197, 0.1);
+        border-color: rgba(255, 74, 197, 0.28);
+        color: #ff4ac5;
+      }
+
+      html.dark-mode.neon-aurora .eyebrow {
+        background: rgba(78, 247, 215, 0.1);
+        border-color: rgba(78, 247, 215, 0.28);
+        color: #4ef7d7;
+      }
+
       html.light-mode .eyebrow {
         background: rgba(91, 124, 255, 0.1);
         border-color: rgba(91, 124, 255, 0.18);
@@ -194,6 +380,34 @@
       }
       .highlight {
         background: linear-gradient(135deg, #dfe8ff 0%, var(--primary) 40%, var(--accent) 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      html.dark-mode.neon-cyberpunk .highlight {
+        background: linear-gradient(135deg, #ff3bd4 0%, #8f52ff 40%, #35f7b0 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      html.dark-mode.neon-electric .highlight {
+        background: linear-gradient(135deg, #08b4ff 0%, #2d6bff 40%, #5fffe0 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      html.dark-mode.neon-magenta .highlight {
+        background: linear-gradient(135deg, #ff4ac5 0%, #ff7e5f 40%, #7ef9ff 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      html.dark-mode.neon-aurora .highlight {
+        background: linear-gradient(135deg, #4ef7d7 0%, #46b7ff 40%, #d7ff57 100%);
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
@@ -238,6 +452,26 @@
         box-shadow: 0 18px 40px rgba(91, 124, 255, 0.35);
       }
 
+      html.dark-mode.neon-cyberpunk .btn-primary {
+        background: linear-gradient(135deg, #ff3bd4 0%, #8f52ff 100%);
+        box-shadow: 0 18px 40px rgba(255, 59, 212, 0.28), 0 0 24px rgba(255, 59, 212, 0.2);
+      }
+
+      html.dark-mode.neon-electric .btn-primary {
+        background: linear-gradient(135deg, #08b4ff 0%, #2d6bff 100%);
+        box-shadow: 0 18px 40px rgba(8, 180, 255, 0.28), 0 0 24px rgba(8, 180, 255, 0.2);
+      }
+
+      html.dark-mode.neon-magenta .btn-primary {
+        background: linear-gradient(135deg, #ff4ac5 0%, #ff7e5f 100%);
+        box-shadow: 0 18px 40px rgba(255, 74, 197, 0.28), 0 0 24px rgba(255, 74, 197, 0.2);
+      }
+
+      html.dark-mode.neon-aurora .btn-primary {
+        background: linear-gradient(135deg, #4ef7d7 0%, #46b7ff 100%);
+        box-shadow: 0 18px 40px rgba(78, 247, 215, 0.28), 0 0 24px rgba(78, 247, 215, 0.2);
+      }
+
       html.light-mode .btn-primary {
         box-shadow: 0 18px 40px rgba(91, 124, 255, 0.2);
       }
@@ -247,6 +481,26 @@
         border: 1px solid var(--border);
         color: var(--text);
         transition: background 0.3s ease, border-color 0.3s ease;
+      }
+
+      html.dark-mode.neon-cyberpunk .btn-secondary {
+        background: rgba(255, 59, 212, 0.08);
+        border-color: rgba(255, 59, 212, 0.28);
+      }
+
+      html.dark-mode.neon-electric .btn-secondary {
+        background: rgba(8, 180, 255, 0.08);
+        border-color: rgba(8, 180, 255, 0.28);
+      }
+
+      html.dark-mode.neon-magenta .btn-secondary {
+        background: rgba(255, 74, 197, 0.08);
+        border-color: rgba(255, 74, 197, 0.28);
+      }
+
+      html.dark-mode.neon-aurora .btn-secondary {
+        background: rgba(78, 247, 215, 0.08);
+        border-color: rgba(78, 247, 215, 0.28);
       }
 
       html.light-mode .btn-secondary {
@@ -265,6 +519,30 @@
         transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
       }
 
+      html.dark-mode.neon-cyberpunk .profile-card {
+        background: linear-gradient(180deg, rgba(15, 17, 36, 0.96), rgba(16, 10, 30, 0.88));
+        border-color: rgba(255, 59, 212, 0.26);
+        box-shadow: 0 28px 60px rgba(255, 59, 212, 0.18), inset 0 0 20px rgba(255, 59, 212, 0.05);
+      }
+
+      html.dark-mode.neon-electric .profile-card {
+        background: linear-gradient(180deg, rgba(9, 18, 35, 0.96), rgba(8, 17, 31, 0.88));
+        border-color: rgba(8, 180, 255, 0.26);
+        box-shadow: 0 28px 60px rgba(8, 180, 255, 0.18), inset 0 0 20px rgba(8, 180, 255, 0.05);
+      }
+
+      html.dark-mode.neon-magenta .profile-card {
+        background: linear-gradient(180deg, rgba(27, 12, 26, 0.96), rgba(22, 14, 31, 0.88));
+        border-color: rgba(255, 74, 197, 0.26);
+        box-shadow: 0 28px 60px rgba(255, 74, 197, 0.18), inset 0 0 20px rgba(255, 74, 197, 0.05);
+      }
+
+      html.dark-mode.neon-aurora .profile-card {
+        background: linear-gradient(180deg, rgba(8, 22, 21, 0.96), rgba(9, 27, 28, 0.88));
+        border-color: rgba(78, 247, 215, 0.26);
+        box-shadow: 0 28px 60px rgba(78, 247, 215, 0.18), inset 0 0 20px rgba(78, 247, 215, 0.05);
+      }
+
       html.light-mode .profile-card {
         background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(248, 249, 251, 0.95));
       }
@@ -281,6 +559,22 @@
         transition: opacity 0.3s ease;
       }
 
+      html.dark-mode.neon-cyberpunk .profile-card::before {
+        background: linear-gradient(135deg, rgba(255, 59, 212, 0.62), rgba(143, 82, 255, 0.32), transparent 60%);
+      }
+
+      html.dark-mode.neon-electric .profile-card::before {
+        background: linear-gradient(135deg, rgba(8, 180, 255, 0.62), rgba(95, 255, 224, 0.28), transparent 60%);
+      }
+
+      html.dark-mode.neon-magenta .profile-card::before {
+        background: linear-gradient(135deg, rgba(255, 74, 197, 0.62), rgba(255, 126, 95, 0.32), transparent 60%);
+      }
+
+      html.dark-mode.neon-aurora .profile-card::before {
+        background: linear-gradient(135deg, rgba(78, 247, 215, 0.62), rgba(70, 183, 255, 0.32), transparent 60%);
+      }
+
       html.light-mode .profile-card::before {
         opacity: 0.4;
       }
@@ -291,6 +585,22 @@
         border: 1px solid var(--border);
         background: #0e1729;
         transition: background 0.3s ease, border-color 0.3s ease;
+      }
+
+      html.dark-mode.neon-cyberpunk .avatar-wrap {
+        border-color: rgba(255, 59, 212, 0.28);
+      }
+
+      html.dark-mode.neon-electric .avatar-wrap {
+        border-color: rgba(8, 180, 255, 0.28);
+      }
+
+      html.dark-mode.neon-magenta .avatar-wrap {
+        border-color: rgba(255, 74, 197, 0.28);
+      }
+
+      html.dark-mode.neon-aurora .avatar-wrap {
+        border-color: rgba(78, 247, 215, 0.28);
       }
 
       html.light-mode .avatar-wrap {
@@ -327,6 +637,30 @@
         transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
       }
 
+      html.dark-mode.neon-cyberpunk .profile-badge {
+        background: rgba(53, 247, 176, 0.08);
+        border-color: rgba(53, 247, 176, 0.35);
+        color: #35f7b0;
+      }
+
+      html.dark-mode.neon-electric .profile-badge {
+        background: rgba(95, 255, 224, 0.08);
+        border-color: rgba(95, 255, 224, 0.35);
+        color: #5fffe0;
+      }
+
+      html.dark-mode.neon-magenta .profile-badge {
+        background: rgba(126, 249, 255, 0.08);
+        border-color: rgba(126, 249, 255, 0.35);
+        color: #7ef9ff;
+      }
+
+      html.dark-mode.neon-aurora .profile-badge {
+        background: rgba(215, 255, 87, 0.08);
+        border-color: rgba(215, 255, 87, 0.35);
+        color: #d7ff57;
+      }
+
       html.light-mode .profile-badge {
         background: rgba(29, 184, 133, 0.1);
         border-color: rgba(29, 184, 133, 0.35);
@@ -360,6 +694,30 @@
         font-size: 0.9rem;
         font-weight: 500;
         transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+      }
+
+      html.dark-mode.neon-cyberpunk .tag {
+        border-color: rgba(255, 59, 212, 0.18);
+        background: rgba(255, 59, 212, 0.08);
+        color: #ff3bd4;
+      }
+
+      html.dark-mode.neon-electric .tag {
+        border-color: rgba(8, 180, 255, 0.18);
+        background: rgba(8, 180, 255, 0.08);
+        color: #08b4ff;
+      }
+
+      html.dark-mode.neon-magenta .tag {
+        border-color: rgba(255, 74, 197, 0.18);
+        background: rgba(255, 74, 197, 0.08);
+        color: #ff4ac5;
+      }
+
+      html.dark-mode.neon-aurora .tag {
+        border-color: rgba(78, 247, 215, 0.18);
+        background: rgba(78, 247, 215, 0.08);
+        color: #4ef7d7;
       }
 
       html.light-mode .tag {
@@ -398,6 +756,26 @@
         transition: background 0.3s ease, border-color 0.3s ease;
       }
 
+      html.dark-mode.neon-cyberpunk .company-mark {
+        border-color: rgba(255, 59, 212, 0.18);
+        background: rgba(255, 59, 212, 0.08);
+      }
+
+      html.dark-mode.neon-electric .company-mark {
+        border-color: rgba(8, 180, 255, 0.18);
+        background: rgba(8, 180, 255, 0.08);
+      }
+
+      html.dark-mode.neon-magenta .company-mark {
+        border-color: rgba(255, 74, 197, 0.18);
+        background: rgba(255, 74, 197, 0.08);
+      }
+
+      html.dark-mode.neon-aurora .company-mark {
+        border-color: rgba(78, 247, 215, 0.18);
+        background: rgba(78, 247, 215, 0.08);
+      }
+
       html.light-mode .company-mark {
         border-color: rgba(0,0,0,0.06);
         background: rgba(91,124,255,0.12);
@@ -432,6 +810,30 @@
         border-color: rgba(124,156,255,0.3);
       }
 
+      html.dark-mode.neon-cyberpunk .toggle-btn {
+        background: rgba(255, 59, 212, 0.1);
+        border-color: rgba(255, 59, 212, 0.3);
+        color: #ff3bd4;
+      }
+
+      html.dark-mode.neon-electric .toggle-btn {
+        background: rgba(8, 180, 255, 0.1);
+        border-color: rgba(8, 180, 255, 0.3);
+        color: #08b4ff;
+      }
+
+      html.dark-mode.neon-magenta .toggle-btn {
+        background: rgba(255, 74, 197, 0.1);
+        border-color: rgba(255, 74, 197, 0.3);
+        color: #ff4ac5;
+      }
+
+      html.dark-mode.neon-aurora .toggle-btn {
+        background: rgba(78, 247, 215, 0.1);
+        border-color: rgba(78, 247, 215, 0.3);
+        color: #4ef7d7;
+      }
+
       html.light-mode .toggle-btn {
         background: rgba(91,124,255,0.1);
         border-color: rgba(91,124,255,0.2);
@@ -447,6 +849,22 @@
         border-top: 1px solid var(--border);
         background: rgba(11, 16, 32, 0.45);
         transition: background 0.3s ease, border-color 0.3s ease;
+      }
+
+      html.dark-mode.neon-cyberpunk .site-footer {
+        background: rgba(10, 8, 18, 0.5);
+      }
+
+      html.dark-mode.neon-electric .site-footer {
+        background: rgba(7, 11, 21, 0.5);
+      }
+
+      html.dark-mode.neon-magenta .site-footer {
+        background: rgba(22, 10, 21, 0.5);
+      }
+
+      html.dark-mode.neon-aurora .site-footer {
+        background: rgba(8, 20, 19, 0.5);
       }
 
       html.light-mode .site-footer {
@@ -477,6 +895,26 @@
         border: 1px solid var(--border);
         color: var(--text);
         transition: all 0.3s ease;
+      }
+
+      html.dark-mode.neon-cyberpunk .socials a {
+        background: rgba(255, 59, 212, 0.06);
+        border-color: rgba(255, 59, 212, 0.18);
+      }
+
+      html.dark-mode.neon-electric .socials a {
+        background: rgba(8, 180, 255, 0.06);
+        border-color: rgba(8, 180, 255, 0.18);
+      }
+
+      html.dark-mode.neon-magenta .socials a {
+        background: rgba(255, 74, 197, 0.06);
+        border-color: rgba(255, 74, 197, 0.18);
+      }
+
+      html.dark-mode.neon-aurora .socials a {
+        background: rgba(78, 247, 215, 0.06);
+        border-color: rgba(78, 247, 215, 0.18);
       }
 
       html.light-mode .socials a {
@@ -511,6 +949,9 @@
             <li><a href="https://github.com/raduq">GitHub</a></li>
             <li><a href="https://www.linkedin.com/in/raduan-santos">LinkedIn</a></li>
           </ul>
+          <button class="neon-theme-toggle" id="neonThemeToggle" onclick="cycleNeonTheme()" aria-label="Cycle neon theme" title="Cycle neon theme">
+            <i class="fas fa-bolt"></i>
+          </button>
           <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle theme">
             <i class="fas fa-moon"></i>
           </button>
@@ -693,11 +1134,11 @@
           </div>
 
           <p class="lead">
-            I'm Raduan Silva dos Santos, a software engineer based in the Netherlands, currently working at Rabobank. My work spans backend systems, frontend applications, enterprise integrations, and platform engineering with a strong focus on maintainable and scalable software.
+            I'm Raduan Silva dos Santos, a software engineer based in the Netherlands, currently working at Rabobank. My work spans backend systems, frontend applications, enterprise integrations, and platform-centered engineering.
           </p>
 
           <p class="lead">
-            My background includes experience in Java, Kotlin, JavaScript, Angular, Web Components, REST APIs, PostgreSQL, cloud environments, and Kubernetes. I've worked across financial services, enterprise document systems, and product-focused engineering teams, combining engineering depth with practical delivery.
+            My background includes experience in Java, Kotlin, JavaScript, Angular, Web Components, REST APIs, PostgreSQL, cloud environments, and Kubernetes. I've worked across financial services, enterprise platforms, and distributed systems.
           </p>
 
           <div class="stack" style="margin-top: 2rem;">
@@ -730,27 +1171,46 @@
     </footer>
 
     <script>
-      // Initialize theme from localStorage or system preference
+      const neonThemes = ['neon-cyberpunk', 'neon-electric', 'neon-magenta', 'neon-aurora'];
+      const neonIcons = ['fa-bolt', 'fa-broadcast-tower', 'fa-sparkles', 'fa-wave-square'];
+
       function initTheme() {
         const savedTheme = localStorage.getItem('theme');
+        const savedNeonTheme = localStorage.getItem('neonTheme');
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        
+
         if (savedTheme === 'light' || (savedTheme === null && !prefersDark)) {
+          document.documentElement.classList.remove('dark-mode');
           document.documentElement.classList.add('light-mode');
           updateThemeIcon(true);
         } else {
           document.documentElement.classList.remove('light-mode');
+          document.documentElement.classList.add('dark-mode');
           updateThemeIcon(false);
+          const theme = savedNeonTheme && neonThemes.includes(savedNeonTheme) ? savedNeonTheme : neonThemes[0];
+          document.documentElement.classList.add(theme);
+          updateNeonThemeIcon(theme);
         }
       }
 
       function toggleTheme() {
         const html = document.documentElement;
-        html.classList.toggle('light-mode');
-        
         const isLight = html.classList.contains('light-mode');
+
+        html.classList.toggle('light-mode');
+        html.classList.toggle('dark-mode', !isLight);
+
+        if (!isLight) {
+          html.classList.remove(...neonThemes);
+          const savedNeonTheme = localStorage.getItem('neonTheme') || neonThemes[0];
+          html.classList.add(savedNeonTheme);
+          updateNeonThemeIcon(savedNeonTheme);
+        } else {
+          html.classList.remove(...neonThemes);
+        }
+
         localStorage.setItem('theme', isLight ? 'light' : 'dark');
-        updateThemeIcon(isLight);
+        updateThemeIcon(!isLight);
       }
 
       function updateThemeIcon(isLight) {
@@ -764,12 +1224,41 @@
         }
       }
 
+      function cycleNeonTheme() {
+        const html = document.documentElement;
+        if (!html.classList.contains('dark-mode')) return;
+
+        let current = neonThemes.findIndex(theme => html.classList.contains(theme));
+        if (current === -1) current = 0;
+
+        html.classList.remove(neonThemes[current]);
+        const nextIndex = (current + 1) % neonThemes.length;
+        const nextTheme = neonThemes[nextIndex];
+        html.classList.add(nextTheme);
+        localStorage.setItem('neonTheme', nextTheme);
+        updateNeonThemeIcon(nextTheme);
+      }
+
+      function updateNeonThemeIcon(themeName) {
+        const button = document.getElementById('neonThemeToggle');
+        if (!button) return;
+
+        const icon = button.querySelector('i');
+        const themeIndex = neonThemes.indexOf(themeName);
+
+        neonIcons.forEach(cls => icon.classList.remove(cls));
+
+        if (themeIndex >= 0) {
+          icon.classList.add(neonIcons[themeIndex]);
+        }
+      }
+
       function toggleMoreItems() {
         const moreItems = document.getElementById('moreItems');
         const toggleBtn = document.getElementById('toggleBtn');
-        
+
         moreItems.classList.toggle('visible');
-        
+
         if (moreItems.classList.contains('visible')) {
           toggleBtn.innerHTML = '<i class="fas fa-chevron-up"></i> Show less';
         } else {
@@ -777,7 +1266,6 @@
         }
       }
 
-      // Initialize on page load
       document.addEventListener('DOMContentLoaded', initTheme);
     </script>
   </body>
