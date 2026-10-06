@@ -1,147 +1,567 @@
 <!DOCTYPE html>
 <html lang="en">
-
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta name="author" content="Raduan Santos">
-    <meta name="description" content="Professional toughts and ideas">
+    <meta name="description" content="Professional thoughts and ideas">
     <meta name="keywords" content="blog,developer,personal">
 
-    <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Raduan Santos"/>
-<meta name="twitter:description" content="Professional toughts and ideas"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:title" content="Raduan Santos"/>
+    <meta name="twitter:description" content="Professional thoughts and ideas"/>
 
     <meta property="og:title" content="Raduan Santos" />
-<meta property="og:description" content="Professional toughts and ideas" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://raduq.github.io/" />
+    <meta property="og:description" content="Professional thoughts and ideas" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://raduq.github.io/" />
 
-<meta property="og:updated_time" content="2019-06-21T14:39:36&#43;02:00"/>
+    <base href="https://raduq.github.io/">
 
-
-    
-      <base href="https://raduq.github.io/">
-    
     <title>Raduan Santos</title>
 
-    
-      <link rel="canonical" href="https://raduq.github.io/">
-    
+    <link rel="canonical" href="https://raduq.github.io/">
 
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
-
-    
-      
-      
-      <link rel="stylesheet" href="https://raduq.github.io/css/coder.min.28d751104f30c16da1aa1bb04015cbe662cacfe0d1b01af4f2240ad58580069c.css" integrity="sha256-KNdREE8wwW2hqhuwQBXL5mLKz&#43;DRsBr08iQK1YWABpw=" crossorigin="anonymous" media="screen" />
-    
-
-    
-
-    
-
-    
-
-    
-    
     <link rel="icon" type="image/png" href="https://raduq.github.io/img/favicon-32x32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="https://raduq.github.io/img/favicon-16x16.png" sizes="16x16">
 
-    <link rel="alternate" type="application/rss+xml" href="https://raduq.github.io/index.xml" title="Raduan Santos" />
-    <meta name="generator" content="Hugo 0.55.6" />
+    <style>
+      :root {
+        --bg: #0b1020;
+        --bg-soft: #121a2b;
+        --panel: rgba(18, 26, 43, 0.8);
+        --panel-strong: #111827;
+        --text: #edf2ff;
+        --muted: #a5b4cf;
+        --primary: #7c9cff;
+        --primary-strong: #5b7cff;
+        --accent: #8ef0d1;
+        --border: rgba(255,255,255,0.08);
+        --shadow: rgba(30, 41, 59, 0.45);
+      }
+
+      * { box-sizing: border-box; }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: 'Inter', sans-serif;
+        background:
+          radial-gradient(circle at top left, rgba(124, 156, 255, 0.18), transparent 28%),
+          radial-gradient(circle at bottom right, rgba(142, 240, 209, 0.12), transparent 25%),
+          var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      .container {
+        width: min(1100px, calc(100% - 2rem));
+        margin: 0 auto;
+      }
+
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        backdrop-filter: blur(14px);
+        background: rgba(11, 16, 32, 0.7);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 72px;
+      }
+
+      .brand {
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        font-size: 0.82rem;
+        color: var(--text);
+      }
+
+      .brand-mark {
+        color: var(--accent);
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .nav-links a {
+        color: var(--muted);
+        font-size: 0.96rem;
+        transition: color 0.2s ease;
+      }
+
+      .nav-links a:hover {
+        color: var(--text);
+      }
+
+      .hero {
+        padding: 6rem 0 4rem;
+      }
+
+      .hero-inner {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 3rem;
+        align-items: center;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.4rem 0.8rem;
+        border-radius: 999px;
+        background: rgba(124, 156, 255, 0.1);
+        border: 1px solid rgba(124, 156, 255, 0.18);
+        color: #dfe8ff;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        font-size: 0.7rem;
+        font-weight: 700;
+      }
+
+      h1 {
+        margin: 1rem 0 1rem;
+        font-size: clamp(2.8rem, 5vw, 5rem);
+        line-height: 1.02;
+        letter-spacing: -0.06em;
+      }
+
+      .highlight {
+        background: linear-gradient(135deg, #dfe8ff 0%, var(--primary) 40%, var(--accent) 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .lead {
+        max-width: 620px;
+        font-size: 1.16rem;
+        color: var(--muted);
+        margin-bottom: 2rem;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-bottom: 2rem;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.6rem;
+        padding: 0.9rem 1.3rem;
+        border-radius: 12px;
+        font-weight: 700;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, var(--primary) 0%, var(--primary-strong) 100%);
+        color: #fff;
+        box-shadow: 0 18px 40px rgba(91, 124, 255, 0.35);
+      }
+
+      .btn-secondary {
+        background: rgba(255,255,255,0.02);
+        border: 1px solid var(--border);
+        color: var(--text);
+      }
+
+      .mini-stats {
+        display: flex;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        color: var(--muted);
+      }
+
+      .stat {
+        min-width: 110px;
+      }
+
+      .stat strong {
+        display: block;
+        font-size: 1.2rem;
+        color: var(--text);
+      }
+
+      .profile-panel {
+        position: relative;
+        display: grid;
+        place-items: center;
+      }
+
+      .profile-card {
+        position: relative;
+        width: min(100%, 380px);
+        background: linear-gradient(180deg, rgba(17, 24, 39, 0.94), rgba(11, 16, 32, 0.76));
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        padding: 1.25rem;
+        box-shadow: 0 28px 60px var(--shadow);
+      }
+
+      .profile-card::before {
+        content: "";
+        position: absolute;
+        inset: -1px;
+        background: linear-gradient(135deg, rgba(124,156,255,0.55), rgba(142,240,209,0.28), transparent 60%);
+        border-radius: 24px;
+        z-index: -1;
+        filter: blur(18px);
+        opacity: 0.7;
+      }
+
+      .avatar-wrap {
+        overflow: hidden;
+        border-radius: 18px;
+        border: 1px solid var(--border);
+        background: #0e1729;
+      }
+
+      .avatar-wrap img {
+        width: 100%;
+        height: 320px;
+        object-fit: cover;
+      }
+
+      .profile-meta {
+        margin-top: 1rem;
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        align-items: center;
+      }
+
+      .profile-name {
+        font-size: 1.2rem;
+        font-weight: 700;
+      }
+
+      .profile-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 74px;
+        padding: 0.45rem 0.6rem;
+        border-radius: 999px;
+        color: var(--accent);
+        border: 1px solid rgba(142, 240, 209, 0.35);
+        background: rgba(142, 240, 209, 0.08);
+        font-size: 0.72rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+
+      .section {
+        padding: 2rem 0 5rem;
+      }
+
+      .section-heading {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-bottom: 2rem;
+      }
+
+      .section-heading h2 {
+        margin: 0;
+        font-size: clamp(1.8rem, 3vw, 2.5rem);
+        letter-spacing: -0.04em;
+      }
+
+      .section-heading a {
+        color: var(--primary);
+        font-weight: 600;
+      }
+
+      .card-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.5rem;
+      }
+
+      .feature-card {
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        padding: 1.5rem;
+        box-shadow: 0 16px 30px rgba(0,0,0,0.17);
+      }
+
+      .feature-icon {
+        width: 48px;
+        height: 48px;
+        display: grid;
+        place-items: center;
+        border-radius: 12px;
+        background: linear-gradient(135deg, rgba(124,156,255,0.18), rgba(142,240,209,0.12));
+        color: var(--accent);
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+      }
+
+      .feature-card h3 {
+        margin: 0 0 0.65rem;
+        font-size: 1.2rem;
+      }
+
+      .feature-card p {
+        margin: 0 0 1rem;
+        color: var(--muted);
+      }
+
+      .feature-card a {
+        color: var(--primary);
+        font-weight: 600;
+      }
+
+      .stack {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+      }
+
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.7rem 1rem;
+        border-radius: 999px;
+        border: 1px solid rgba(124, 156, 255, 0.18);
+        background: rgba(124, 156, 255, 0.05);
+        color: #dde7ff;
+        font-size: 0.9rem;
+        font-weight: 500;
+      }
+
+      .site-footer {
+        padding: 2rem 0 3rem;
+        border-top: 1px solid var(--border);
+        background: rgba(11, 16, 32, 0.45);
+      }
+
+      .footer-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        color: var(--muted);
+      }
+
+      .socials {
+        display: flex;
+        align-items: center;
+        gap: 0.9rem;
+        font-size: 1.1rem;
+      }
+
+      .socials a {
+        width: 40px;
+        height: 40px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.02);
+        border: 1px solid var(--border);
+        color: var(--text);
+      }
+
+      @media (max-width: 840px) {
+        .hero-inner,
+        .card-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .section-heading {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .nav {
+          flex-direction: column;
+          padding: 1rem 0;
+        }
+
+        .nav-links {
+          flex-wrap: wrap;
+          justify-content: center;
+          padding-bottom: 0.5rem;
+        }
+
+        .footer-inner {
+          flex-direction: column;
+          text-align: center;
+        }
+      }
+    </style>
   </head>
 
-  <body class=" ">
-    <main class="wrapper">
-      <nav class="navigation">
-  <section class="container">
-    <a class="navigation-title" href="https://raduq.github.io/">
-      Raduan Santos
-    </a>
-    <input type="checkbox" id="menu-toggle" />
-    <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
-    <ul class="navigation-list">
-      
-        
-          <li class="navigation-item">
-            <a class="navigation-link" href="https://raduq.github.io/posts/">Blog</a>
-          </li>
-        
-          <li class="navigation-item">
-            <a class="navigation-link" href="https://raduq.github.io/about/">About</a>
-          </li>
-        
-      
-      
-    </ul>
-  </section>
-</nav>
-
-
-      <div class="content">
-        
-  <section class="container centered">
-  <div class="about">
-    
-      <div class="avatar"><img src="https://raduq.github.io/images/avatar.jpg" alt="avatar"></div>
-    
-    <h1>Raduan Santos</h1>
-    <h2>Fullstack Software Engineer</h2>
-    
-    <ul>
-      
-        
-          <li>
-            <a href="https://github.com/raduq" aria-label="Github">
-              <i class="fab fa-github fa-2x" aria-hidden="true"></i>
-            </a>
-          </li>
-        
-      
-        
-          <li>
-            <a href="https://twitter.com/raduq" aria-label="Twitter">
-              <i class="fab fa-twitter fa-2x" aria-hidden="true"></i>
-            </a>
-          </li>
-        
-      
-        
-          <li>
-            <a href="https://www.linkedin.com/in/raduan-santos" aria-label="LinkedIn">
-              <i class="fab fa-linkedin fa-2x" aria-hidden="true"></i>
-            </a>
-          </li>
-        
-      
-    </ul>
-    
-  </div>
-</section>
-
-
+  <body>
+    <header class="site-header">
+      <div class="container nav">
+        <a href="https://raduq.github.io/" class="brand"><span class="brand-mark">&lt;/&gt;</span> Raduan Santos</a>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#work">Work</a></li>
+          <li><a href="https://raduq.github.io/posts/">Blog</a></li>
+          <li><a href="https://raduq.github.io/about/">Profile</a></li>
+        </ul>
       </div>
+    </header>
 
-      <footer class="footer">
-  <section class="container">
-    
-     © 2019
-    
-       · 
-      Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
-    
-    
-  </section>
-</footer>
+    <main>
+      <section class="hero">
+        <div class="container hero-inner">
+          <div>
+            <div class="eyebrow">Developer portfolio</div>
+            <h1>Building digital products with <span class="highlight">clarity</span> and craft.</h1>
+            <p class="lead">
+              I’m a fullstack software engineer focused on creating robust, user-friendly systems and thoughtful developer experiences.
+            </p>
 
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="https://github.com/raduq"><i class="fab fa-github"></i> GitHub</a>
+              <a class="btn btn-secondary" href="https://raduq.github.io/posts/"><i class="fas fa-pen-nib"></i> Read the blog</a>
+            </div>
+
+            <div class="mini-stats">
+              <div class="stat">
+                <strong>8+</strong>
+                Years building software
+              </div>
+              <div class="stat">
+                <strong>20+</strong>
+                Projects shipped
+              </div>
+              <div class="stat">
+                <strong>∞</strong>
+                Curious by default
+              </div>
+            </div>
+          </div>
+
+          <div class="profile-panel">
+            <div class="profile-card">
+              <div class="avatar-wrap">
+                <img src="https://raduq.github.io/images/avatar.jpg" alt="Raduan Santos avatar">
+              </div>
+              <div class="profile-meta">
+                <div>
+                  <div class="profile-name">Raduan Santos</div>
+                  <div style="color: var(--muted); font-size: 0.9rem;">Fullstack Software Engineer</div>
+                </div>
+                <div class="profile-badge">Available</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="work">
+        <div class="container">
+          <div class="section-heading">
+            <h2>What I do</h2>
+            <a href="https://github.com/raduq">View projects</a>
+          </div>
+
+          <div class="card-grid">
+            <article class="feature-card">
+              <div class="feature-icon"><i class="fas fa-code"></i></div>
+              <h3>Fullstack Engineering</h3>
+              <p>Designing and shipping backend systems, APIs, and modern user interfaces with maintainable architecture.</p>
+              <a href="https://github.com/raduq">Explore code</a>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-icon"><i class="fas fa-cloud"></i></div>
+              <h3>Cloud & Operations</h3>
+              <p>Building reliable platforms with scalable infrastructure, automation, and deployment workflows.</p>
+              <a href="https://raduq.github.io/about/">Learn more</a>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-icon"><i class="fas fa-pencil-ruler"></i></div>
+              <h3>Product Thinking</h3>
+              <p>Translating business goals into thoughtful software experiences that are simple, fast, and useful.</p>
+              <a href="https://raduq.github.io/posts/">Read insights</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="about">
+        <div class="container">
+          <div class="section-heading">
+            <h2>Stack & interests</h2>
+          </div>
+
+          <div class="stack">
+            <span class="tag">JavaScript</span>
+            <span class="tag">TypeScript</span>
+            <span class="tag">React</span>
+            <span class="tag">Node.js</span>
+            <span class="tag">Java</span>
+            <span class="tag">Go</span>
+            <span class="tag">Cloud</span>
+            <span class="tag">REST APIs</span>
+            <span class="tag">Databases</span>
+            <span class="tag">Web Components</span>
+            <span class="tag">Architecture</span>
+            <span class="tag">DevOps</span>
+          </div>
+        </div>
+      </section>
     </main>
 
-    
-
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>© 2019 Raduan Santos</div>
+        <div class="socials">
+          <a href="https://github.com/raduq" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://twitter.com/raduq" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="https://www.linkedin.com/in/raduan-santos" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+    </footer>
   </body>
-
 </html>
