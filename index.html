@@ -588,34 +588,38 @@
       .profile-card {
         position: relative;
         width: min(100%, 380px);
-        background: linear-gradient(180deg, rgba(17, 24, 39, 0.94), rgba(11, 16, 32, 0.76));
+        background: linear-gradient(180deg, rgba(29, 40, 62, 0.98), rgba(19, 28, 46, 0.96));
         border: 1px solid var(--border);
-        border-radius: 24px;
-        padding: 1.25rem;
+        border-radius: 28px;
+        padding: 0.75rem;
         box-shadow: 0 28px 60px var(--shadow);
-        transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .profile-card:hover {
+        transform: translateY(-6px);
       }
 
       html.dark-mode.neon-cyberpunk .profile-card {
-        background: linear-gradient(180deg, rgba(15, 17, 36, 0.96), rgba(16, 10, 30, 0.88));
+        background: linear-gradient(180deg, rgba(38, 25, 57, 0.98), rgba(25, 18, 43, 0.97));
         border-color: rgba(255, 59, 212, 0.26);
         box-shadow: 0 28px 60px rgba(255, 59, 212, 0.18), inset 0 0 20px rgba(255, 59, 212, 0.05);
       }
 
       html.dark-mode.neon-electric .profile-card {
-        background: linear-gradient(180deg, rgba(9, 18, 35, 0.96), rgba(8, 17, 31, 0.88));
+        background: linear-gradient(180deg, rgba(18, 41, 62, 0.98), rgba(13, 29, 49, 0.97));
         border-color: rgba(8, 180, 255, 0.26);
         box-shadow: 0 28px 60px rgba(8, 180, 255, 0.18), inset 0 0 20px rgba(8, 180, 255, 0.05);
       }
 
       html.dark-mode.neon-magenta .profile-card {
-        background: linear-gradient(180deg, rgba(27, 12, 26, 0.96), rgba(22, 14, 31, 0.88));
+        background: linear-gradient(180deg, rgba(48, 25, 48, 0.98), rgba(32, 19, 42, 0.97));
         border-color: rgba(255, 74, 197, 0.26);
         box-shadow: 0 28px 60px rgba(255, 74, 197, 0.18), inset 0 0 20px rgba(255, 74, 197, 0.05);
       }
 
       html.dark-mode.neon-aurora .profile-card {
-        background: linear-gradient(180deg, rgba(8, 22, 21, 0.96), rgba(9, 27, 28, 0.88));
+        background: linear-gradient(180deg, rgba(19, 47, 44, 0.98), rgba(14, 35, 40, 0.97));
         border-color: rgba(78, 247, 215, 0.26);
         box-shadow: 0 28px 60px rgba(78, 247, 215, 0.18), inset 0 0 20px rgba(78, 247, 215, 0.05);
       }
@@ -657,11 +661,22 @@
       }
 
       .avatar-wrap {
+        position: relative;
         overflow: hidden;
-        border-radius: 18px;
+        isolation: isolate;
+        aspect-ratio: 1 / 1;
+        border-radius: 21px;
         border: 1px solid var(--border);
         background: #0e1729;
         transition: background 0.3s ease, border-color 0.3s ease;
+      }
+
+      .avatar-wrap::after {
+        content: "";
+        position: absolute;
+        inset: 35% 0 0;
+        background: linear-gradient(180deg, transparent, rgba(5, 9, 19, 0.42));
+        pointer-events: none;
       }
 
       html.dark-mode.neon-cyberpunk .avatar-wrap {
@@ -685,65 +700,57 @@
       }
 
       .avatar-wrap img {
+        display: block;
         width: 100%;
-        height: 320px;
+        height: 100%;
+        min-height: 300px;
         object-fit: cover;
+        object-position: center 38%;
+        transition: transform 0.5s ease;
       }
-      .profile-meta {
-        margin-top: 1rem;
-        display: flex;
-        justify-content: space-between;
-        gap: 1rem;
-        align-items: center;
+
+      .profile-card:hover .avatar-wrap img {
+        transform: scale(1.035);
       }
-      .profile-name { font-size: 1.2rem; font-weight: 700; }
-      .profile-badge {
+
+      .profile-location {
+        position: absolute;
+        z-index: 1;
+        left: 1rem;
+        bottom: 1rem;
         display: inline-flex;
         align-items: center;
-        justify-content: center;
-        min-width: 74px;
-        padding: 0.45rem 0.6rem;
+        gap: 0.45rem;
+        padding: 0.5rem 0.75rem;
+        border: 1px solid rgba(255, 255, 255, 0.24);
         border-radius: 999px;
-        color: var(--accent);
-        border: 1px solid rgba(142, 240, 209, 0.35);
-        background: rgba(142, 240, 209, 0.08);
-        font-size: 0.72rem;
+        background: rgba(9, 14, 27, 0.58);
+        color: #fff;
+        font-size: 0.76rem;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+      }
+
+      .profile-meta {
+        padding: 1.15rem 0.5rem 0.6rem;
+      }
+      .profile-name {
+        font-size: clamp(1.2rem, 4vw, 1.45rem);
         font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.06em;
-        transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+        letter-spacing: -0.035em;
+        line-height: 1.2;
       }
-
-      html.dark-mode.neon-cyberpunk .profile-badge {
-        background: rgba(53, 247, 176, 0.08);
-        border-color: rgba(53, 247, 176, 0.35);
-        color: #35f7b0;
+      .profile-role {
+        margin-top: 0.4rem;
+        color: var(--muted);
+        font-size: 0.92rem;
       }
-
-      html.dark-mode.neon-electric .profile-badge {
-        background: rgba(95, 255, 224, 0.08);
-        border-color: rgba(95, 255, 224, 0.35);
-        color: #5fffe0;
+      .profile-company {
+        color: var(--text);
+        font-weight: 600;
       }
-
-      html.dark-mode.neon-magenta .profile-badge {
-        background: rgba(126, 249, 255, 0.08);
-        border-color: rgba(126, 249, 255, 0.35);
-        color: #7ef9ff;
-      }
-
-      html.dark-mode.neon-aurora .profile-badge {
-        background: rgba(215, 255, 87, 0.08);
-        border-color: rgba(215, 255, 87, 0.35);
-        color: #d7ff57;
-      }
-
-      html.light-mode .profile-badge {
-        background: rgba(29, 184, 133, 0.1);
-        border-color: rgba(29, 184, 133, 0.35);
-        color: var(--accent);
-      }
-
       .section { padding: 2rem 0 5rem; }
       .section-heading {
         display: flex;
@@ -1058,13 +1065,11 @@
             <div class="profile-card">
               <div class="avatar-wrap">
                 <img src="https://raduq.github.io/images/avatar.jpg" alt="Raduan Santos avatar">
+                <div class="profile-location"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Netherlands</div>
               </div>
               <div class="profile-meta">
-                <div>
-                  <div class="profile-name">Raduan Silva dos Santos</div>
-                  <div style="color: var(--muted); font-size: 0.9rem;">Software Engineer at Rabobank</div>
-                </div>
-                <div class="profile-badge">Netherlands</div>
+                <div class="profile-name">Raduan Silva dos Santos</div>
+                <div class="profile-role">Software Engineer <span class="profile-company">at Rabobank</span></div>
               </div>
             </div>
           </div>
