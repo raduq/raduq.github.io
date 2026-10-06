@@ -126,6 +126,72 @@
         --accent: #1db885;
         --border: rgba(0,0,0,0.08);
         --shadow: rgba(0, 0, 0, 0.08);
+        --glow-primary: rgba(91, 124, 255, 0.08);
+        --glow-accent: rgba(29, 184, 133, 0.06);
+      }
+
+      html.light-mode.light-sakura {
+        --bg: #fff7fa;
+        --bg-soft: #fcebf1;
+        --panel: rgba(255, 255, 255, 0.95);
+        --panel-strong: #fffafd;
+        --text: #3b2431;
+        --muted: #876578;
+        --primary: #d95f91;
+        --primary-strong: #b63d70;
+        --accent: #eb8a9e;
+        --border: rgba(166, 73, 112, 0.14);
+        --shadow: rgba(139, 58, 95, 0.1);
+        --glow-primary: rgba(233, 121, 163, 0.14);
+        --glow-accent: rgba(255, 194, 204, 0.18);
+      }
+
+      html.light-mode.light-ocean {
+        --bg: #f1faff;
+        --bg-soft: #e4f4fb;
+        --panel: rgba(255, 255, 255, 0.95);
+        --panel-strong: #fbfeff;
+        --text: #183447;
+        --muted: #5b788a;
+        --primary: #1787ad;
+        --primary-strong: #126888;
+        --accent: #31a9a0;
+        --border: rgba(33, 117, 145, 0.14);
+        --shadow: rgba(24, 89, 115, 0.1);
+        --glow-primary: rgba(71, 177, 213, 0.15);
+        --glow-accent: rgba(96, 213, 195, 0.12);
+      }
+
+      html.light-mode.light-meadow {
+        --bg: #f5fbf3;
+        --bg-soft: #eaf5e7;
+        --panel: rgba(255, 255, 255, 0.95);
+        --panel-strong: #fcfffb;
+        --text: #2a3b2b;
+        --muted: #687c68;
+        --primary: #568d4b;
+        --primary-strong: #3f7135;
+        --accent: #8aaf52;
+        --border: rgba(81, 127, 68, 0.15);
+        --shadow: rgba(61, 99, 53, 0.1);
+        --glow-primary: rgba(133, 190, 112, 0.14);
+        --glow-accent: rgba(203, 225, 135, 0.15);
+      }
+
+      html.light-mode.light-sunset {
+        --bg: #fff8ef;
+        --bg-soft: #f9eee0;
+        --panel: rgba(255, 255, 255, 0.95);
+        --panel-strong: #fffdf9;
+        --text: #453124;
+        --muted: #8a705e;
+        --primary: #d4773e;
+        --primary-strong: #b65a2b;
+        --accent: #d69a48;
+        --border: rgba(166, 104, 55, 0.15);
+        --shadow: rgba(129, 76, 42, 0.1);
+        --glow-primary: rgba(240, 158, 91, 0.14);
+        --glow-accent: rgba(250, 207, 123, 0.13);
       }
 
       * { box-sizing: border-box; }
@@ -144,8 +210,8 @@
 
       html.light-mode body {
         background:
-          radial-gradient(circle at top left, rgba(91, 124, 255, 0.08), transparent 28%),
-          radial-gradient(circle at bottom right, rgba(29, 184, 133, 0.06), transparent 25%),
+          radial-gradient(circle at top left, var(--glow-primary), transparent 28%),
+          radial-gradient(circle at bottom right, var(--glow-accent), transparent 25%),
           var(--bg);
       }
 
@@ -248,7 +314,7 @@
       .nav-links a:hover { color: var(--text); }
 
       .theme-toggle,
-      .neon-theme-toggle {
+      .theme-selector {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -264,54 +330,55 @@
       }
 
       .theme-toggle:hover,
-      .neon-theme-toggle:hover {
+      .theme-selector:hover {
         background: rgba(124,156,255,0.15);
         border-color: rgba(124,156,255,0.3);
       }
 
       html.light-mode .theme-toggle,
-      html.light-mode .neon-theme-toggle {
+      html.light-mode .theme-selector {
         background: rgba(91,124,255,0.1);
         border-color: rgba(91,124,255,0.2);
         color: var(--primary);
       }
 
       html.light-mode .theme-toggle:hover,
-      html.light-mode .neon-theme-toggle:hover {
+      html.light-mode .theme-selector:hover {
         background: rgba(91,124,255,0.15);
         border-color: rgba(91,124,255,0.3);
       }
 
-      .neon-theme-toggle {
+      .theme-selector {
         display: none;
       }
 
-      html.dark-mode .neon-theme-toggle {
+      html.dark-mode .theme-selector,
+      html.light-mode .theme-selector {
         display: flex;
       }
 
-      html.dark-mode.neon-cyberpunk .neon-theme-toggle {
+      html.dark-mode.neon-cyberpunk .theme-selector {
         background: rgba(255, 59, 212, 0.12);
         border-color: rgba(255, 59, 212, 0.38);
         color: #ff3bd4;
         box-shadow: 0 0 16px rgba(255, 59, 212, 0.18);
       }
 
-      html.dark-mode.neon-electric .neon-theme-toggle {
+      html.dark-mode.neon-electric .theme-selector {
         background: rgba(8, 180, 255, 0.12);
         border-color: rgba(8, 180, 255, 0.38);
         color: #08b4ff;
         box-shadow: 0 0 16px rgba(8, 180, 255, 0.18);
       }
 
-      html.dark-mode.neon-magenta .neon-theme-toggle {
+      html.dark-mode.neon-magenta .theme-selector {
         background: rgba(255, 74, 197, 0.12);
         border-color: rgba(255, 74, 197, 0.38);
         color: #ff4ac5;
         box-shadow: 0 0 16px rgba(255, 74, 197, 0.18);
       }
 
-      html.dark-mode.neon-aurora .neon-theme-toggle {
+      html.dark-mode.neon-aurora .theme-selector {
         background: rgba(78, 247, 215, 0.12);
         border-color: rgba(78, 247, 215, 0.38);
         color: #4ef7d7;
@@ -953,7 +1020,7 @@
             <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle theme">
               <i class="fas fa-moon"></i>
             </button>
-            <button class="neon-theme-toggle" id="neonThemeToggle" onclick="cycleNeonTheme()" aria-label="Cycle neon theme" title="Cycle neon theme">
+            <button class="theme-selector" id="themeSelector" onclick="cycleTheme()" aria-label="Cycle color theme" title="Cycle color theme">
               <i class="fas fa-bolt"></i>
             </button>
           </div>
@@ -1173,25 +1240,30 @@
     </footer>
 
     <script>
+      const lightThemes = ['light-sakura', 'light-ocean', 'light-meadow', 'light-sunset'];
       const neonThemes = ['neon-cyberpunk', 'neon-electric', 'neon-magenta', 'neon-aurora'];
-      const neonIcons = ['fa-bolt', 'fa-broadcast-tower', 'fa-sparkles', 'fa-wave-square'];
+      const lightThemeIcons = ['fa-spa', 'fa-water', 'fa-leaf', 'fa-sun'];
+      const neonIcons = ['fa-bolt', 'fa-broadcast-tower', 'fa-star', 'fa-wave-square'];
 
       function initTheme() {
         const savedTheme = localStorage.getItem('theme');
         const savedNeonTheme = localStorage.getItem('neonTheme');
+        const savedLightTheme = localStorage.getItem('lightTheme');
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         const html = document.documentElement;
-        const theme = savedNeonTheme && neonThemes.includes(savedNeonTheme) ? savedNeonTheme : neonThemes[0];
+        const darkTheme = savedNeonTheme && neonThemes.includes(savedNeonTheme) ? savedNeonTheme : neonThemes[0];
+        const lightTheme = savedLightTheme && lightThemes.includes(savedLightTheme) ? savedLightTheme : lightThemes[0];
 
         if (savedTheme === 'light' || (savedTheme === null && !prefersDark)) {
-          html.classList.remove('dark-mode', ...neonThemes);
-          html.classList.add('light-mode');
+          html.classList.remove('dark-mode', ...neonThemes, ...lightThemes);
+          html.classList.add('light-mode', lightTheme);
           updateThemeIcon(true);
+          updateThemeSelectorIcon(lightTheme, true);
         } else {
-          html.classList.remove('light-mode', ...neonThemes);
-          html.classList.add('dark-mode', theme);
+          html.classList.remove('light-mode', ...neonThemes, ...lightThemes);
+          html.classList.add('dark-mode', darkTheme);
           updateThemeIcon(false);
-          updateNeonThemeIcon(theme);
+          updateThemeSelectorIcon(darkTheme, false);
         }
       }
 
@@ -1199,15 +1271,18 @@
         const html = document.documentElement;
         const isLight = html.classList.contains('light-mode');
 
-        html.classList.remove('light-mode', 'dark-mode', ...neonThemes);
+        html.classList.remove('light-mode', 'dark-mode', ...neonThemes, ...lightThemes);
 
         if (isLight) {
           const savedNeonTheme = localStorage.getItem('neonTheme');
           const theme = savedNeonTheme && neonThemes.includes(savedNeonTheme) ? savedNeonTheme : neonThemes[0];
           html.classList.add('dark-mode', theme);
-          updateNeonThemeIcon(theme);
+          updateThemeSelectorIcon(theme, false);
         } else {
-          html.classList.add('light-mode');
+          const savedLightTheme = localStorage.getItem('lightTheme');
+          const theme = savedLightTheme && lightThemes.includes(savedLightTheme) ? savedLightTheme : lightThemes[0];
+          html.classList.add('light-mode', theme);
+          updateThemeSelectorIcon(theme, true);
         }
 
         localStorage.setItem('theme', isLight ? 'dark' : 'light');
@@ -1225,32 +1300,37 @@
         }
       }
 
-      function cycleNeonTheme() {
+      function cycleTheme() {
         const html = document.documentElement;
-        if (!html.classList.contains('dark-mode')) return;
+        const isLight = html.classList.contains('light-mode');
+        const themes = isLight ? lightThemes : neonThemes;
+        const icons = isLight ? lightThemeIcons : neonIcons;
+        const storageKey = isLight ? 'lightTheme' : 'neonTheme';
 
-        let current = neonThemes.findIndex(theme => html.classList.contains(theme));
+        let current = themes.findIndex(theme => html.classList.contains(theme));
         if (current === -1) current = 0;
 
-        html.classList.remove(neonThemes[current]);
-        const nextIndex = (current + 1) % neonThemes.length;
-        const nextTheme = neonThemes[nextIndex];
+        html.classList.remove(...themes);
+        const nextIndex = (current + 1) % themes.length;
+        const nextTheme = themes[nextIndex];
         html.classList.add(nextTheme);
-        localStorage.setItem('neonTheme', nextTheme);
-        updateNeonThemeIcon(nextTheme);
+        localStorage.setItem(storageKey, nextTheme);
+        updateThemeSelectorIcon(nextTheme, isLight);
       }
 
-      function updateNeonThemeIcon(themeName) {
-        const button = document.getElementById('neonThemeToggle');
+      function updateThemeSelectorIcon(themeName, isLight) {
+        const button = document.getElementById('themeSelector');
         if (!button) return;
 
         const icon = button.querySelector('i');
-        const themeIndex = neonThemes.indexOf(themeName);
+        const themes = isLight ? lightThemes : neonThemes;
+        const icons = isLight ? lightThemeIcons : neonIcons;
+        const themeIndex = themes.indexOf(themeName);
 
-        neonIcons.forEach(cls => icon.classList.remove(cls));
+        [...lightThemeIcons, ...neonIcons].forEach(cls => icon.classList.remove(cls));
 
         if (themeIndex >= 0) {
-          icon.classList.add(neonIcons[themeIndex]);
+          icon.classList.add(icons[themeIndex]);
         }
       }
 
