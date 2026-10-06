@@ -949,12 +949,14 @@
             <li><a href="https://github.com/raduq">GitHub</a></li>
             <li><a href="https://www.linkedin.com/in/raduan-santos">LinkedIn</a></li>
           </ul>
-          <button class="neon-theme-toggle" id="neonThemeToggle" onclick="cycleNeonTheme()" aria-label="Cycle neon theme" title="Cycle neon theme">
-            <i class="fas fa-bolt"></i>
-          </button>
-          <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle theme">
-            <i class="fas fa-moon"></i>
-          </button>
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle theme">
+              <i class="fas fa-moon"></i>
+            </button>
+            <button class="neon-theme-toggle" id="neonThemeToggle" onclick="cycleNeonTheme()" aria-label="Cycle neon theme" title="Cycle neon theme">
+              <i class="fas fa-bolt"></i>
+            </button>
+          </div>
         </div>
       </div>
     </header>
@@ -1178,17 +1180,17 @@
         const savedTheme = localStorage.getItem('theme');
         const savedNeonTheme = localStorage.getItem('neonTheme');
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const html = document.documentElement;
+        const theme = savedNeonTheme && neonThemes.includes(savedNeonTheme) ? savedNeonTheme : neonThemes[0];
 
         if (savedTheme === 'light' || (savedTheme === null && !prefersDark)) {
-          document.documentElement.classList.remove('dark-mode');
-          document.documentElement.classList.add('light-mode');
+          html.classList.remove('dark-mode', ...neonThemes);
+          html.classList.add('light-mode');
           updateThemeIcon(true);
         } else {
-          document.documentElement.classList.remove('light-mode');
-          document.documentElement.classList.add('dark-mode');
+          html.classList.remove('light-mode', ...neonThemes);
+          html.classList.add('dark-mode', theme);
           updateThemeIcon(false);
-          const theme = savedNeonTheme && neonThemes.includes(savedNeonTheme) ? savedNeonTheme : neonThemes[0];
-          document.documentElement.classList.add(theme);
           updateNeonThemeIcon(theme);
         }
       }
@@ -1197,19 +1199,18 @@
         const html = document.documentElement;
         const isLight = html.classList.contains('light-mode');
 
-        html.classList.toggle('light-mode');
-        html.classList.toggle('dark-mode', !isLight);
+        html.classList.remove('light-mode', 'dark-mode', ...neonThemes);
 
-        if (!isLight) {
-          html.classList.remove(...neonThemes);
-          const savedNeonTheme = localStorage.getItem('neonTheme') || neonThemes[0];
-          html.classList.add(savedNeonTheme);
-          updateNeonThemeIcon(savedNeonTheme);
+        if (isLight) {
+          const savedNeonTheme = localStorage.getItem('neonTheme');
+          const theme = savedNeonTheme && neonThemes.includes(savedNeonTheme) ? savedNeonTheme : neonThemes[0];
+          html.classList.add('dark-mode', theme);
+          updateNeonThemeIcon(theme);
         } else {
-          html.classList.remove(...neonThemes);
+          html.classList.add('light-mode');
         }
 
-        localStorage.setItem('theme', isLight ? 'light' : 'dark');
+        localStorage.setItem('theme', isLight ? 'dark' : 'light');
         updateThemeIcon(!isLight);
       }
 
