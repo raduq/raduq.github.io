@@ -452,6 +452,16 @@
         color: transparent;
       }
 
+      .theme-easter-egg {
+        appearance: none;
+        border: 0;
+        padding: 0;
+        font: inherit;
+        letter-spacing: inherit;
+        cursor: pointer;
+        vertical-align: baseline;
+      }
+
       html.dark-mode.neon-cyberpunk .highlight {
         background: linear-gradient(135deg, #ff3bd4 0%, #8f52ff 40%, #35f7b0 100%);
         -webkit-background-clip: text;
@@ -1033,7 +1043,7 @@
         <div class="container hero-inner">
           <div>
             <div class="eyebrow">Developer portfolio</div>
-            <h1>Building digital products with <span class="highlight">clarity</span> and craft.</h1>
+            <h1>Building digital products with <button class="highlight theme-easter-egg" type="button" onclick="cycleTheme()" aria-label="Change color theme">clarity</button> and craft.</h1>
             <p class="lead">
               I'm a software engineer with experience building fullstack systems, cloud-native applications, and enterprise platforms across Java, JavaScript, Kotlin, Angular, and modern web technologies.
             </p>
