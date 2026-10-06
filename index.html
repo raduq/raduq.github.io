@@ -17,7 +17,6 @@
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://raduq.github.io/" />
 
-    <base href="https://raduq.github.io/">
     <title>Raduan Santos | Software Engineer</title>
     <link rel="canonical" href="https://raduq.github.io/">
 
@@ -709,8 +708,39 @@
         transition: transform 0.5s ease;
       }
 
+      .avatar-trigger {
+        display: block;
+        width: 100%;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        cursor: pointer;
+      }
+
+      .avatar-trigger:focus-visible {
+        outline: 3px solid var(--accent);
+        outline-offset: -4px;
+      }
+
+      .avatar-wrap img.pixelated {
+        image-rendering: pixelated;
+        transition: none;
+      }
+
       .profile-card:hover .avatar-wrap img {
         transform: scale(1.035);
+      }
+
+      .avatar-status {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
       }
 
       .profile-location {
@@ -1064,9 +1094,12 @@
           <div class="profile-panel">
             <div class="profile-card">
               <div class="avatar-wrap">
-                <img src="https://raduq.github.io/images/avatar.jpg" alt="Raduan Santos avatar">
+                <button class="avatar-trigger" id="avatarTrigger" type="button" aria-label="Click five times quickly to activate pixel-art mode">
+                  <img id="profileAvatar" src="images/avatar.jpg" alt="Raduan Santos avatar">
+                </button>
                 <div class="profile-location"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Netherlands</div>
               </div>
+              <span class="avatar-status" id="avatarStatus" aria-live="polite"></span>
               <div class="profile-meta">
                 <div class="profile-name">Raduan Silva dos Santos</div>
                 <div class="profile-role">Software Engineer <span class="profile-company">at Rabobank</span></div>
@@ -1362,6 +1395,51 @@
         }
       }
 
+      let avatarClickCount = 0;
+      let avatarClickTimer;
+      let pixelArtTimer;
+
+      function handleAvatarClick() {
+        const avatar = document.getElementById('profileAvatar');
+        const status = document.getElementById('avatarStatus');
+        const source = avatar.dataset.originalSrc || avatar.src;
+
+        avatarClickCount += 1;
+        window.clearTimeout(avatarClickTimer);
+        avatarClickTimer = window.setTimeout(() => {
+          avatarClickCount = 0;
+        }, 2000);
+
+        if (avatarClickCount < 5) return;
+
+        avatarClickCount = 0;
+        window.clearTimeout(pixelArtTimer);
+
+        const canvas = document.createElement('canvas');
+        canvas.width = 24;
+        canvas.height = 24;
+        const context = canvas.getContext('2d');
+
+        if (!context) {
+          status.textContent = 'Pixel-art mode could not be activated.';
+          return;
+        }
+
+        avatar.dataset.originalSrc = source;
+        context.imageSmoothingEnabled = false;
+        context.drawImage(avatar, 0, 0, canvas.width, canvas.height);
+        avatar.src = canvas.toDataURL();
+        avatar.classList.add('pixelated');
+        status.textContent = 'Pixel-art mode activated!';
+
+        pixelArtTimer = window.setTimeout(() => {
+          avatar.src = avatar.dataset.originalSrc;
+          avatar.classList.remove('pixelated');
+          status.textContent = 'Pixel-art mode ended.';
+        }, 5000);
+      }
+
+      document.getElementById('avatarTrigger').addEventListener('click', handleAvatarClick);
       document.addEventListener('DOMContentLoaded', initTheme);
     </script>
   </body>
