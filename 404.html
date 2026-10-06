@@ -11,10 +11,10 @@
 
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="404 Page not found"/>
-<meta name="twitter:description" content="Professional toughts and ideas"/>
+<meta name="twitter:description" content="This route took a wrong turn. Find your way back to Raduan's portfolio."/>
 
     <meta property="og:title" content="404 Page not found" />
-<meta property="og:description" content="Professional toughts and ideas" />
+<meta property="og:description" content="This route took a wrong turn. Find your way back to Raduan's portfolio." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://raduq.github.io/404.html" />
 
@@ -23,7 +23,7 @@
     
       <base href="https://raduq.github.io/404.html">
     
-    <title>Raduan Santos</title>
+    <title>Page not found · Raduan Santos</title>
 
     
       <link rel="canonical" href="https://raduq.github.io/404.html">
@@ -51,64 +51,219 @@
     <link rel="icon" type="image/png" href="https://raduq.github.io/img/favicon-16x16.png" sizes="16x16">
 
     <meta name="generator" content="Hugo 0.55.6" />
+
+    <style>
+      :root {
+        color-scheme: dark;
+        --page-bg: #0b1020;
+        --card-bg: rgba(18, 26, 43, 0.82);
+        --text: #edf2ff;
+        --muted: #a5b4cf;
+        --primary: #7c9cff;
+        --accent: #8ef0d1;
+        --border: rgba(255, 255, 255, 0.1);
+      }
+
+      * { box-sizing: border-box; }
+      body {
+        min-width: 320px;
+        min-height: 100vh;
+        margin: 0;
+        background:
+          radial-gradient(ellipse at 15% 15%, rgba(124, 156, 255, 0.14), transparent 38%),
+          radial-gradient(ellipse at 85% 80%, rgba(142, 240, 209, 0.1), transparent 35%),
+          var(--page-bg);
+        color: var(--text);
+        font-family: Lato, Helvetica, sans-serif;
+      }
+
+      a { color: inherit; }
+      a:focus-visible {
+        outline: 3px solid var(--accent);
+        outline-offset: 4px;
+      }
+
+      .error-layout {
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+      }
+
+      .error-header,
+      .error-footer {
+        width: min(100% - 3rem, 1100px);
+        margin: 0 auto;
+      }
+
+      .error-header {
+        display: flex;
+        min-height: 80px;
+        align-items: center;
+      }
+
+      .error-brand {
+        color: var(--text);
+        font-size: 0.85rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-decoration: none;
+        text-transform: uppercase;
+      }
+
+      .error-brand span { color: var(--accent); }
+
+      .error-main {
+        display: grid;
+        flex: 1;
+        place-items: center;
+        padding: 3rem 1.5rem 5rem;
+      }
+
+      .error-card {
+        width: min(100%, 680px);
+        padding: clamp(2rem, 7vw, 4.5rem);
+        border: 1px solid var(--border);
+        border-radius: 28px;
+        background: var(--card-bg);
+        box-shadow: 0 28px 80px rgba(0, 0, 0, 0.3);
+        text-align: center;
+      }
+
+      .error-label {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+        padding: 0.5rem 0.8rem;
+        border: 1px solid rgba(142, 240, 209, 0.25);
+        border-radius: 999px;
+        background: rgba(142, 240, 209, 0.08);
+        color: var(--accent);
+        font-family: "Source Code Pro", monospace;
+        font-size: 0.75rem;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+      }
+
+      .error-code {
+        margin: 1.3rem 0 0;
+        background: linear-gradient(135deg, var(--primary), var(--accent));
+        background-clip: text;
+        color: transparent;
+        font-family: "Source Code Pro", monospace;
+        font-size: clamp(6rem, 25vw, 11rem);
+        font-weight: 700;
+        letter-spacing: -0.1em;
+        line-height: 1;
+      }
+
+      .error-card h1 {
+        margin: 1rem 0 0.75rem;
+        font-size: clamp(1.8rem, 5vw, 2.5rem);
+        letter-spacing: -0.04em;
+      }
+
+      .error-card p {
+        max-width: 440px;
+        margin: 0 auto;
+        color: var(--muted);
+        font-size: 1.05rem;
+        line-height: 1.7;
+      }
+
+      .error-trail {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.7rem;
+        margin: 2rem 0;
+        color: var(--muted);
+        font-family: "Source Code Pro", monospace;
+        font-size: 0.8rem;
+      }
+
+      .error-trail span:nth-child(2) {
+        width: 64px;
+        border-top: 1px dashed rgba(165, 180, 207, 0.5);
+      }
+
+      .error-trail span:last-child { color: var(--accent); }
+
+      .error-actions {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.8rem;
+      }
+
+      .error-button {
+        display: inline-flex;
+        min-height: 46px;
+        align-items: center;
+        justify-content: center;
+        gap: 0.55rem;
+        padding: 0.75rem 1rem;
+        border: 1px solid rgba(124, 156, 255, 0.35);
+        border-radius: 10px;
+        background: rgba(124, 156, 255, 0.1);
+        color: var(--text);
+        font-weight: 700;
+        text-decoration: none;
+        transition: background 0.2s ease, transform 0.2s ease;
+      }
+
+      .error-button:hover {
+        transform: translateY(-2px);
+        background: rgba(124, 156, 255, 0.18);
+      }
+
+      .error-button.primary {
+        border-color: transparent;
+        background: var(--primary);
+        color: #081020;
+      }
+
+      .error-button.primary:hover { background: #96adff; }
+
+      .error-footer {
+        padding: 1.5rem 0;
+        color: var(--muted);
+        font-size: 0.85rem;
+        text-align: center;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+          scroll-behavior: auto !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
   </head>
 
-  <body class=" ">
-    <main class="wrapper">
-      <nav class="navigation">
-  <section class="container">
-    <a class="navigation-title" href="https://raduq.github.io/">
-      Raduan Santos
-    </a>
-    <input type="checkbox" id="menu-toggle" />
-    <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
-    <ul class="navigation-list">
-      
-        
-          <li class="navigation-item">
-            <a class="navigation-link" href="https://raduq.github.io/posts/">Blog</a>
-          </li>
-        
-          <li class="navigation-item">
-            <a class="navigation-link" href="https://raduq.github.io/about/">About</a>
-          </li>
-        
-      
-      
-    </ul>
-  </section>
-</nav>
+  <body>
+    <div class="error-layout">
+      <header class="error-header">
+        <a class="error-brand" href="https://raduq.github.io/"><span>&lt;/&gt;</span> Raduan Santos</a>
+      </header>
 
+      <main class="error-main">
+        <section class="error-card" aria-labelledby="error-title">
+          <div class="error-label"><i class="fas fa-compass" aria-hidden="true"></i> Route not found</div>
+          <div class="error-code" aria-hidden="true">404</div>
+          <h1 id="error-title">Looks like you took a wrong turn.</h1>
+          <p>This page seems to have wandered off. Let’s get you back to something that exists.</p>
+          <div class="error-trail" aria-hidden="true">
+            <span>you are here</span><span></span><span><i class="fas fa-map-marker-alt"></i> lost</span>
+          </div>
+          <nav class="error-actions" aria-label="Ways to continue">
+            <a class="error-button primary" href="https://raduq.github.io/"><i class="fas fa-home" aria-hidden="true"></i> Back to home</a>
+            <a class="error-button" href="https://raduq.github.io/posts/"><i class="fas fa-book-open" aria-hidden="true"></i> Explore the blog</a>
+          </nav>
+        </section>
+      </main>
 
-      <div class="content">
-        
-  <section class="container centered">
-  <div class="error">
-    <h1>404</h1>
-    <h2>Page Not Found</h2>
-    <p>Sorry, this page does not exist.<br />You can head back to <a href="https://raduq.github.io/">homepage</a>.</p>
-  </div>
-</section>
-
-
-      </div>
-
-      <footer class="footer">
-  <section class="container">
-    
-     © 2019
-    
-       · 
-      Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
-    
-    
-  </section>
-</footer>
-
-    </main>
-
-    
-
+      <footer class="error-footer">© Raduan Santos · Happy exploring</footer>
+    </div>
   </body>
 
 </html>
