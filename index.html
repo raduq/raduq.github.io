@@ -152,6 +152,8 @@
         border-radius: 12px;
         font-weight: 700;
         transition: transform 0.2s ease, box-shadow 0.2s ease;
+        border: none;
+        cursor: pointer;
       }
       .btn:hover { transform: translateY(-2px); }
       .btn-primary {
@@ -162,18 +164,6 @@
       .btn-secondary {
         background: rgba(255,255,255,0.02);
         border: 1px solid var(--border);
-        color: var(--text);
-      }
-      .mini-stats {
-        display: flex;
-        gap: 1.5rem;
-        flex-wrap: wrap;
-        color: var(--muted);
-      }
-      .stat { min-width: 110px; }
-      .stat strong {
-        display: block;
-        font-size: 1.2rem;
         color: var(--text);
       }
 
@@ -245,36 +235,6 @@
         font-size: clamp(1.8rem, 3vw, 2.5rem);
         letter-spacing: -0.04em;
       }
-      .section-heading a { color: var(--primary); font-weight: 600; }
-      .card-grid {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 1.5rem;
-      }
-      .feature-card {
-        background: var(--panel);
-        border: 1px solid var(--border);
-        border-radius: 18px;
-        padding: 1.5rem;
-        box-shadow: 0 16px 30px rgba(0,0,0,0.17);
-      }
-      .feature-icon {
-        width: 48px;
-        height: 48px;
-        display: grid;
-        place-items: center;
-        border-radius: 12px;
-        background: linear-gradient(135deg, rgba(124,156,255,0.18), rgba(142,240,209,0.12));
-        color: var(--accent);
-        font-size: 1.2rem;
-        margin-bottom: 1rem;
-      }
-      .feature-card h3 { margin: 0 0 0.65rem; font-size: 1.2rem; }
-      .feature-card p {
-        margin: 0 0 1rem;
-        color: var(--muted);
-      }
-      .feature-card a { color: var(--primary); font-weight: 600; }
 
       .stack { display: flex; flex-wrap: wrap; gap: 0.8rem; }
       .tag {
@@ -322,6 +282,30 @@
       .timeline-details { margin-top: 0.5rem; }
       .timeline-details strong { color: var(--text); }
 
+      .hidden-items {
+        display: none;
+      }
+      .hidden-items.visible {
+        display: contents;
+      }
+
+      .toggle-btn {
+        display: block;
+        margin-top: 1.5rem;
+        padding: 0.75rem 1.25rem;
+        background: rgba(124,156,255,0.1);
+        border: 1px solid rgba(124,156,255,0.2);
+        color: var(--primary);
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+      .toggle-btn:hover {
+        background: rgba(124,156,255,0.15);
+        border-color: rgba(124,156,255,0.3);
+      }
+
       .site-footer {
         padding: 2rem 0 3rem;
         border-top: 1px solid var(--border);
@@ -352,7 +336,7 @@
       }
 
       @media (max-width: 840px) {
-        .hero-inner, .card-grid { grid-template-columns: 1fr; }
+        .hero-inner { grid-template-columns: 1fr; }
         .section-heading { flex-direction: column; align-items: flex-start; }
         .nav {
           flex-direction: column;
@@ -395,21 +379,6 @@
               <a class="btn btn-primary" href="https://github.com/raduq"><i class="fab fa-github"></i> GitHub</a>
               <a class="btn btn-secondary" href="#about"><i class="fas fa-user"></i> About</a>
             </div>
-
-            <div class="mini-stats">
-              <div class="stat">
-                <strong>8+</strong>
-                Years in software engineering
-              </div>
-              <div class="stat">
-                <strong>9</strong>
-                Companies worked with
-              </div>
-              <div class="stat">
-                <strong>∞</strong>
-                Curious and product-focused
-              </div>
-            </div>
           </div>
 
           <div class="profile-panel">
@@ -433,7 +402,6 @@
         <div class="container">
           <div class="section-heading">
             <h2>Experience</h2>
-            <a href="https://www.linkedin.com/in/raduan-santos">Full profile →</a>
           </div>
 
           <ul class="timeline">
@@ -476,86 +444,92 @@
               <div class="timeline-details"><strong>Fullstack software development with:</strong> Angular and Web Components.</div>
             </li>
 
-            <li>
-              <div class="timeline-role">
-                <div class="company-mark" style="background: rgba(10,130,255,0.14);">CN</div>
-                <div>
-                  <strong>Software Developer</strong><br>
-                  <span class="timeline-meta">Code Nomads</span>
+            <div class="hidden-items" id="moreItems">
+              <li>
+                <div class="timeline-role">
+                  <div class="company-mark" style="background: rgba(10,130,255,0.14);">CN</div>
+                  <div>
+                    <strong>Software Developer</strong><br>
+                    <span class="timeline-meta">Code Nomads</span>
+                  </div>
                 </div>
-              </div>
-              <div class="timeline-meta">Oct 2018 – Jul 2021 · 2 yrs 10 mos</div>
-              <div class="timeline-meta">The Randstad, Netherlands</div>
-            </li>
+                <div class="timeline-meta">Oct 2018 – Jul 2021 · 2 yrs 10 mos</div>
+                <div class="timeline-meta">The Randstad, Netherlands</div>
+              </li>
 
-            <li>
-              <div class="timeline-role">
-                <div class="company-mark" style="background: rgba(59,130,246,0.14);">B</div>
-                <div>
-                  <strong>Software Engineer</strong><br>
-                  <span class="timeline-meta">bol.com · Full-time</span>
+              <li>
+                <div class="timeline-role">
+                  <div class="company-mark" style="background: rgba(59,130,246,0.14);">B</div>
+                  <div>
+                    <strong>Software Engineer</strong><br>
+                    <span class="timeline-meta">bol.com · Full-time</span>
+                  </div>
                 </div>
-              </div>
-              <div class="timeline-meta">Aug 2019 – Dec 2019 · 5 mos</div>
-              <div class="timeline-meta">Utrecht, Netherlands</div>
-              <div class="timeline-details"><strong>Fullstack software development with:</strong> Java, Kotlin, Postgres, and backend services.</div>
-            </li>
+                <div class="timeline-meta">Aug 2019 – Dec 2019 · 5 mos</div>
+                <div class="timeline-meta">Utrecht, Netherlands</div>
+                <div class="timeline-details"><strong>Fullstack software development with:</strong> Java, Kotlin, Postgres, and backend services.</div>
+              </li>
 
-            <li>
-              <div class="timeline-role">
-                <div class="company-mark" style="background: rgba(255,166,0,0.12);">I</div>
-                <div>
-                  <strong>Software Engineer</strong><br>
-                  <span class="timeline-meta">ING Nederland · Full-time</span>
+              <li>
+                <div class="timeline-role">
+                  <div class="company-mark" style="background: rgba(255,166,0,0.12);">I</div>
+                  <div>
+                    <strong>Software Engineer</strong><br>
+                    <span class="timeline-meta">ING Nederland · Full-time</span>
+                  </div>
                 </div>
-              </div>
-              <div class="timeline-meta">Nov 2018 – Jul 2019 · 9 mos</div>
-              <div class="timeline-meta">Amsterdam, North Holland, Netherlands</div>
-              <div class="timeline-details"><strong>Fullstack software development with:</strong> Polymer, HTML5, and single-page application architecture.</div>
-            </li>
+                <div class="timeline-meta">Nov 2018 – Jul 2019 · 9 mos</div>
+                <div class="timeline-meta">Amsterdam, North Holland, Netherlands</div>
+                <div class="timeline-details"><strong>Fullstack software development with:</strong> Polymer, HTML5, and single-page application architecture.</div>
+              </li>
 
-            <li>
-              <div class="timeline-role">
-                <div class="company-mark" style="background: rgba(44,108,255,0.12);">CA</div>
-                <div>
-                  <strong>Software Engineer</strong><br>
-                  <span class="timeline-meta">Conta Azul</span>
+              <li>
+                <div class="timeline-role">
+                  <div class="company-mark" style="background: rgba(44,108,255,0.12);">CA</div>
+                  <div>
+                    <strong>Software Engineer</strong><br>
+                    <span class="timeline-meta">Conta Azul</span>
+                  </div>
                 </div>
-              </div>
-              <div class="timeline-meta">Mar 2017 – Aug 2018 · 1 yr 6 mos</div>
-              <div class="timeline-meta">Joinville, Santa Catarina, Brazil</div>
-              <div class="timeline-details"><strong>RESTful API development with:</strong> Java, JAX-RS, Spring Boot, Amazon AWS, and Amazon SQS.</div>
-              <div class="timeline-details"><strong>Backend microservices development with:</strong> Java 8, Spring Boot, and Go.</div>
-              <div class="timeline-details"><strong>Frontend development with:</strong> AngularJS and Gulp.</div>
-            </li>
+                <div class="timeline-meta">Mar 2017 – Aug 2018 · 1 yr 6 mos</div>
+                <div class="timeline-meta">Joinville, Santa Catarina, Brazil</div>
+                <div class="timeline-details"><strong>RESTful API development with:</strong> Java, JAX-RS, Spring Boot, Amazon AWS, and Amazon SQS.</div>
+                <div class="timeline-details"><strong>Backend microservices development with:</strong> Java 8, Spring Boot, and Go.</div>
+                <div class="timeline-details"><strong>Frontend development with:</strong> AngularJS and Gulp.</div>
+              </li>
 
-            <li>
-              <div class="timeline-role">
-                <div class="company-mark" style="background: rgba(94,63,181,0.12);">S</div>
-                <div>
-                  <strong>Software Engineer</strong><br>
-                  <span class="timeline-meta">Softplan · Permanent</span>
+              <li>
+                <div class="timeline-role">
+                  <div class="company-mark" style="background: rgba(94,63,181,0.12);">S</div>
+                  <div>
+                    <strong>Software Engineer</strong><br>
+                    <span class="timeline-meta">Softplan · Permanent</span>
+                  </div>
                 </div>
-              </div>
-              <div class="timeline-meta">May 2012 – Feb 2017 · 4 yrs 10 mos</div>
-              <div class="timeline-meta">Florianópolis Area, Brazil</div>
-              <div class="timeline-details"><strong>ECM application and API development with:</strong> Java, Spring Boot, CMIS, Apache Chemistry, Alfresco, ActiveMQ, and Jackrabbit.</div>
-              <div class="timeline-details"><strong>Frontend development with:</strong> AngularJS and Bootstrap.</div>
-            </li>
+                <div class="timeline-meta">May 2012 – Feb 2017 · 4 yrs 10 mos</div>
+                <div class="timeline-meta">Florianópolis Area, Brazil</div>
+                <div class="timeline-details"><strong>ECM application and API development with:</strong> Java, Spring Boot, CMIS, Apache Chemistry, Alfresco, ActiveMQ, and Jackrabbit.</div>
+                <div class="timeline-details"><strong>Frontend development with:</strong> AngularJS and Bootstrap.</div>
+              </li>
 
-            <li>
-              <div class="timeline-role">
-                <div class="company-mark" style="background: rgba(28,55,72,0.18);">D</div>
-                <div>
-                  <strong>Software Developer</strong><br>
-                  <span class="timeline-meta">Digitaldoc · Full-time</span>
+              <li>
+                <div class="timeline-role">
+                  <div class="company-mark" style="background: rgba(28,55,72,0.18);">D</div>
+                  <div>
+                    <strong>Software Developer</strong><br>
+                    <span class="timeline-meta">Digitaldoc · Full-time</span>
+                  </div>
                 </div>
-              </div>
-              <div class="timeline-meta">Aug 2010 – Jan 2012 · 1 yr 6 mos</div>
-              <div class="timeline-meta">Medianeira e Região, Brazil</div>
-              <div class="timeline-details"><strong>ECM application development with:</strong> Java, JSF, Hibernate, GWT, MongoDB, and Google Guice.</div>
-            </li>
+                <div class="timeline-meta">Aug 2010 – Jan 2012 · 1 yr 6 mos</div>
+                <div class="timeline-meta">Medianeira e Região, Brazil</div>
+                <div class="timeline-details"><strong>ECM application development with:</strong> Java, JSF, Hibernate, GWT, MongoDB, and Google Guice.</div>
+              </li>
+            </div>
           </ul>
+
+          <button class="toggle-btn" id="toggleBtn" onclick="toggleMoreItems()">
+            <i class="fas fa-chevron-down"></i> Show 6 more companies
+          </button>
         </div>
       </section>
 
@@ -601,5 +575,20 @@
         </div>
       </div>
     </footer>
+
+    <script>
+      function toggleMoreItems() {
+        const moreItems = document.getElementById('moreItems');
+        const toggleBtn = document.getElementById('toggleBtn');
+        
+        moreItems.classList.toggle('visible');
+        
+        if (moreItems.classList.contains('visible')) {
+          toggleBtn.innerHTML = '<i class="fas fa-chevron-up"></i> Show less';
+        } else {
+          toggleBtn.innerHTML = '<i class="fas fa-chevron-down"></i> Show 6 more companies';
+        }
+      }
+    </script>
   </body>
 </html>
