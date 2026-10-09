@@ -215,6 +215,39 @@ html.dark-mode.neon-aurora body {
     var(--bg);
 }
 
+.star-field {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.star-field span {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: #eaf6ff;
+  box-shadow: 0 0 6px rgba(208, 231, 255, 0.7);
+  animation: star-twinkle 4s ease-in-out infinite alternate;
+}
+
+.star-field span:nth-child(3n) { width: 1px; height: 1px; }
+.star-field span:nth-child(7n) { width: 3px; height: 3px; }
+
+@keyframes star-twinkle {
+  from { opacity: 0.25; }
+  to { opacity: 0.85; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .star-field span { animation: none; opacity: 0.65; }
+}
+
+html.dark-mode.stars-visible .star-field { display: block; }
+main, .site-footer { position: relative; z-index: 1; }
+
 a { color: inherit; text-decoration: none; }
 img { max-width: 100%; display: block; }
 .icon {
@@ -970,7 +1003,7 @@ html.light-mode .avatar-wrap {
   color: #dde7ff;
   font-size: 0.9rem;
   font-weight: 500;
-  transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+  transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease, border-radius 0.3s ease;
 }
 
 html.dark-mode.neon-cyberpunk .tag {
@@ -1001,6 +1034,41 @@ html.light-mode .tag {
   border-color: rgba(91, 124, 255, 0.18);
   background: rgba(91, 124, 255, 0.08);
   color: #4a5f99;
+}
+
+.skills-stack.angular-corners .tag { border-radius: 0; }
+
+.angular-status:not(:empty) {
+  align-self: center;
+  padding: 0.35rem 0.6rem;
+  border: 1px dashed var(--accent);
+  border-radius: 4px;
+  background: var(--panel-strong);
+  color: var(--accent);
+  font: 600 0.75rem 'JetBrains Mono', monospace;
+}
+
+.stars-toggle,
+.angular-toggle {
+  font-family: inherit;
+  line-height: inherit;
+  cursor: pointer;
+}
+
+.stars-toggle:disabled { cursor: default; }
+.stars-toggle:focus-visible,
+.angular-toggle:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.angular-toggle[aria-pressed="true"] {
+  border-color: var(--accent);
+  box-shadow: 0 0 12px var(--shadow);
+}
+@media (prefers-reduced-motion: reduce) {
+  .skills-stack .tag { transition: none; }
+}
+html.dark-mode .stars-toggle:hover,
+html.dark-mode .stars-toggle[aria-pressed="true"] {
+  border-color: var(--accent);
+  box-shadow: 0 0 12px var(--shadow);
 }
 
 .timeline {

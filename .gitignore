@@ -1,0 +1,5 @@
+# Local IDE settings
+.idea/
+
+# macOS Finder metadata
+.DS_Store

@@ -55,6 +55,56 @@ function handleAvatarClick() {
   }, 5000);
 }
 
+const starsToggle = document.getElementById('starsToggle');
+
+function syncStarsWithTheme() {
+  const html = document.documentElement;
+  const isDark = html.classList.contains('dark-mode');
+
+  if (!isDark) html.classList.remove('stars-visible');
+  starsToggle.disabled = !isDark;
+  starsToggle.title = isDark ? 'Toggle stars' : 'Available in dark mode';
+  starsToggle.setAttribute('aria-pressed', String(isDark && html.classList.contains('stars-visible')));
+}
+
+starsToggle.addEventListener('click', () => {
+  if (!document.documentElement.classList.contains('dark-mode')) return;
+  const html = document.documentElement;
+  const enabled = html.classList.toggle('stars-visible');
+
+  if (enabled && !document.querySelector('.star-field').childElementCount) {
+    const stars = document.createDocumentFragment();
+    for (let i = 0; i < 90; i += 1) {
+      const star = document.createElement('span');
+      star.style.left = `${Math.random() * 100}%`;
+      star.style.top = `${Math.random() * 100}%`;
+      star.style.animationDelay = `${Math.random() * -4}s`;
+      stars.append(star);
+    }
+    document.querySelector('.star-field').append(stars);
+  }
+  syncStarsWithTheme();
+});
+document.getElementById('themeToggle').addEventListener('click', syncStarsWithTheme);
+document.addEventListener('DOMContentLoaded', syncStarsWithTheme);
+
+const angularToggle = document.getElementById('angularToggle');
+const angularStatus = document.getElementById('angularStatus');
+const skillsStack = angularToggle.closest('.skills-stack');
+let angularTimer;
+
+angularToggle.addEventListener('click', () => {
+  window.clearTimeout(angularTimer);
+  skillsStack.classList.add('angular-corners');
+  angularToggle.setAttribute('aria-pressed', 'true');
+  angularStatus.textContent = '90° mode: sharp corners!';
+  angularTimer = window.setTimeout(() => {
+    skillsStack.classList.remove('angular-corners');
+    angularToggle.setAttribute('aria-pressed', 'false');
+    angularStatus.textContent = '';
+  }, 5000);
+});
+
 document.getElementById('avatarTrigger').addEventListener('click', handleAvatarClick);
 document.getElementById('themeEasterEgg').addEventListener('click', cycleTheme);
 document.getElementById('toggleBtn').addEventListener('click', toggleMoreItems);
