@@ -37,8 +37,16 @@
             <li><a href="../" aria-current="page">Blog</a></li>
           </ul>
           <div class="theme-controls">
-            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme"><i class="fas fa-moon"></i></button>
-            <button class="theme-selector" id="themeSelector" aria-label="Cycle color theme" title="Cycle color theme"><i class="fas fa-bolt"></i></button>
+            <button class="theme-toggle" id="themeToggle" type="button" role="switch" aria-label="Light mode" aria-checked="false">
+              <span class="theme-toggle-stars" aria-hidden="true"></span>
+              <span class="theme-toggle-clouds" aria-hidden="true"></span>
+              <span class="theme-toggle-thumb" aria-hidden="true"></span>
+            </button>
+            <button class="theme-selector" id="themeSelector" type="button" aria-label="Choose color theme" aria-expanded="false" aria-controls="themePalette" title="Choose color theme"><i class="fas fa-palette" aria-hidden="true"></i></button>
+            <div class="theme-palette" id="themePalette" role="group" aria-label="Color themes" hidden>
+              <span class="theme-palette-title">Choose a theme</span>
+              <div class="theme-options" id="themeOptions"></div>
+            </div>
           </div>
         </div>
       </div>

@@ -1,7 +1,15 @@
 const lightThemes = ['light-sakura', 'light-ocean', 'light-meadow', 'light-sunset'];
 const neonThemes = ['neon-cyberpunk', 'neon-electric', 'neon-magenta', 'neon-aurora'];
-const lightThemeIcons = ['fa-spa', 'fa-water', 'fa-leaf', 'fa-cloud-sun'];
-const neonIcons = ['fa-bolt', 'fa-broadcast-tower', 'fa-star', 'fa-wave-square'];
+const themeNames = {
+  'light-sakura': 'Sakura',
+  'light-ocean': 'Ocean',
+  'light-meadow': 'Meadow',
+  'light-sunset': 'Sunset',
+  'neon-cyberpunk': 'Cyberpunk',
+  'neon-electric': 'Electric',
+  'neon-magenta': 'Magenta',
+  'neon-aurora': 'Aurora'
+};
 
 function initTheme() {
   const savedTheme = localStorage.getItem('theme');
@@ -16,12 +24,12 @@ function initTheme() {
     html.classList.remove('dark-mode', ...neonThemes, ...lightThemes);
     html.classList.add('light-mode', lightTheme);
     updateThemeIcon(true);
-    updateThemeSelectorIcon(lightTheme, true);
+    updateThemePalette(lightTheme, true);
   } else {
     html.classList.remove('light-mode', ...neonThemes, ...lightThemes);
     html.classList.add('dark-mode', darkTheme);
     updateThemeIcon(false);
-    updateThemeSelectorIcon(darkTheme, false);
+    updateThemePalette(darkTheme, false);
   }
 }
 
@@ -35,27 +43,21 @@ function toggleTheme() {
     const savedNeonTheme = localStorage.getItem('neonTheme');
     const theme = savedNeonTheme && neonThemes.includes(savedNeonTheme) ? savedNeonTheme : neonThemes[0];
     html.classList.add('dark-mode', theme);
-    updateThemeSelectorIcon(theme, false);
+    updateThemePalette(theme, false);
   } else {
     const savedLightTheme = localStorage.getItem('lightTheme');
     const theme = savedLightTheme && lightThemes.includes(savedLightTheme) ? savedLightTheme : lightThemes[0];
     html.classList.add('light-mode', theme);
-    updateThemeSelectorIcon(theme, true);
+    updateThemePalette(theme, true);
   }
 
   localStorage.setItem('theme', isLight ? 'dark' : 'light');
   updateThemeIcon(!isLight);
+  closeThemePalette();
 }
 
 function updateThemeIcon(isLight) {
-  const icon = document.getElementById('themeToggle').querySelector('i');
-  if (isLight) {
-    icon.classList.remove('fa-moon');
-    icon.classList.add('fa-sun');
-  } else {
-    icon.classList.remove('fa-sun');
-    icon.classList.add('fa-moon');
-  }
+  document.getElementById('themeToggle').setAttribute('aria-checked', String(isLight));
 }
 
 function cycleTheme() {
@@ -72,19 +74,52 @@ function cycleTheme() {
   const nextTheme = themes[nextIndex];
   html.classList.add(nextTheme);
   localStorage.setItem(storageKey, nextTheme);
-  updateThemeSelectorIcon(nextTheme, isLight);
+  updateThemePalette(nextTheme, isLight);
 }
 
-function updateThemeSelectorIcon(themeName, isLight) {
-  const icon = document.getElementById('themeSelector').querySelector('i');
+function updateThemePalette(themeName, isLight) {
   const themes = isLight ? lightThemes : neonThemes;
-  const icons = isLight ? lightThemeIcons : neonIcons;
-  const themeIndex = themes.indexOf(themeName);
+  const options = document.getElementById('themeOptions');
 
-  [...lightThemeIcons, ...neonIcons].forEach(cls => icon.classList.remove(cls));
-  icon.classList.add(icons[themeIndex]);
+  options.replaceChildren(...themes.map(theme => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = `theme-option theme-option-${theme}`;
+    button.setAttribute('aria-pressed', String(theme === themeName));
+    const swatch = document.createElement('span');
+    swatch.className = 'theme-swatch';
+    swatch.setAttribute('aria-hidden', 'true');
+    button.append(swatch, document.createTextNode(themeNames[theme]));
+    button.addEventListener('click', () => {
+      document.documentElement.classList.remove(...themes);
+      document.documentElement.classList.add(theme);
+      localStorage.setItem(isLight ? 'lightTheme' : 'neonTheme', theme);
+      updateThemePalette(theme, isLight);
+      closeThemePalette();
+      document.getElementById('themeSelector').focus();
+    });
+    return button;
+  }));
+}
+
+function closeThemePalette() {
+  document.getElementById('themePalette').hidden = true;
+  document.getElementById('themeSelector').setAttribute('aria-expanded', 'false');
 }
 
 document.getElementById('themeToggle').addEventListener('click', toggleTheme);
-document.getElementById('themeSelector').addEventListener('click', cycleTheme);
+document.getElementById('themeSelector').addEventListener('click', () => {
+  const palette = document.getElementById('themePalette');
+  palette.hidden = !palette.hidden;
+  document.getElementById('themeSelector').setAttribute('aria-expanded', String(!palette.hidden));
+});
+document.addEventListener('click', event => {
+  if (!event.target.closest('.theme-controls')) closeThemePalette();
+});
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape' && !document.getElementById('themePalette').hidden) {
+    closeThemePalette();
+    document.getElementById('themeSelector').focus();
+  }
+});
 document.addEventListener('DOMContentLoaded', initTheme);
