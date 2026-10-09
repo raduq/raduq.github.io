@@ -65,7 +65,10 @@
       }
 
       * { box-sizing: border-box; }
-      html { color-scheme: dark; }
+      html {
+        color-scheme: dark;
+        font-size: 100%;
+      }
       html.dark-mode {
         --page-bg: #070b15;
         --card-bg: rgba(13, 18, 31, 0.82);
@@ -180,13 +183,15 @@
           var(--page-bg);
         color: var(--text);
         font-family: Inter, Lato, Helvetica, sans-serif;
+        font-size: 1rem;
+        line-height: 1.6;
       }
 
       a { color: inherit; }
       .icon {
         display: inline-block;
-        width: 1em;
-        height: 1em;
+        width: 1.25em;
+        height: 1.25em;
         vertical-align: -0.125em;
       }
       a:focus-visible {
@@ -225,57 +230,62 @@
 
       .error-main {
         display: grid;
-        flex: 1;
+        flex: 1 0 auto;
         place-items: center;
-        padding: 3rem 1.5rem 5rem;
+        padding: 2rem 1.5rem;
       }
 
       .error-card {
         display: flex;
-        width: min(100%, 1040px);
-        min-height: min(70vh, 680px);
+        width: min(100%, 680px);
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        padding: clamp(2.5rem, 8vw, 7rem);
+        padding: clamp(1.75rem, 4vw, 2.75rem);
         border: 1px solid var(--border);
-        border-radius: 32px;
+        border-radius: 28px;
         background: var(--card-bg);
-        box-shadow: 0 28px 80px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 24px 64px rgba(0, 0, 0, 0.26);
         text-align: center;
       }
 
       .error-label {
         display: inline-flex;
         align-items: center;
-        gap: 0.55rem;
-        padding: 0.65rem 1rem;
+        gap: 0.65rem;
+        padding: 0.7rem 1rem;
         border: 1px solid var(--border);
         border-radius: 999px;
         background: color-mix(in srgb, var(--accent) 10%, transparent);
         color: var(--accent);
         font-family: "Source Code Pro", monospace;
-        font-size: 0.85rem;
+        font-size: 1rem;
+        font-weight: 700;
         letter-spacing: 0.05em;
         text-transform: uppercase;
       }
 
+      .error-label .icon {
+        width: 1.25em;
+        height: 1.25em;
+      }
+
       .error-code {
-        margin: 1.5rem 0 0;
+        margin: 1rem 0 0;
         background: linear-gradient(135deg, var(--primary), var(--accent));
         background-clip: text;
         color: transparent;
         font-family: "Source Code Pro", monospace;
-        font-size: clamp(10rem, 28vw, 20rem);
+        font-size: clamp(6.5rem, 12vw, 9rem);
         font-weight: 700;
-        letter-spacing: -0.1em;
-        line-height: 1;
+        letter-spacing: -0.08em;
+        line-height: 0.95;
       }
 
       .error-card h1 {
-        margin: 1.5rem 0 1rem;
+        margin: 1rem 0 0.75rem;
         color: var(--text);
-        font-size: clamp(2.2rem, 5vw, 3.6rem);
+        font-size: clamp(1.8rem, 4vw, 2.6rem);
         letter-spacing: -0.04em;
       }
 
@@ -283,50 +293,66 @@
         max-width: 620px;
         margin: 0 auto;
         color: var(--muted);
-        font-size: clamp(1.1rem, 2vw, 1.3rem);
-        line-height: 1.8;
+        font-size: 1.05rem;
+        line-height: 1.7;
       }
 
       .error-trail {
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 0.9rem;
-        margin: 2.5rem 0;
+        gap: 0.75rem;
+        margin: 1.5rem 0;
         color: var(--muted);
         font-family: "Source Code Pro", monospace;
-        font-size: 0.9rem;
+        font-size: 1rem;
       }
 
       .error-trail span:nth-child(2) {
-        width: 88px;
+        width: clamp(2.5rem, 8vw, 5rem);
         border-top: 1px dashed var(--border);
       }
 
+      .error-trail .icon {
+        width: 1.5em;
+        height: 1.5em;
+      }
+
       .error-trail span:last-child { color: var(--accent); }
+      .error-trail span:last-child {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+      }
 
       .error-actions {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        gap: 0.8rem;
+        gap: 0.75rem;
       }
 
       .error-button {
         display: inline-flex;
-        min-height: 54px;
+        min-height: 44px;
         align-items: center;
         justify-content: center;
-        gap: 0.55rem;
-        padding: 0.9rem 1.25rem;
+        gap: 0.5rem;
+        padding: 0.6rem 0.9rem;
         border: 1px solid var(--border);
         border-radius: 12px;
         background: color-mix(in srgb, var(--primary) 10%, transparent);
         color: var(--text);
-        font-size: 1rem;
+        font-size: 0.9rem;
         font-weight: 700;
+        line-height: 1.2;
         text-decoration: none;
         transition: background 0.2s ease, transform 0.2s ease;
+      }
+
+      .error-button .icon {
+        width: 1.2em;
+        height: 1.2em;
       }
 
       .error-button:hover {
@@ -352,12 +378,9 @@
       }
 
       @media (max-width: 600px) {
-        .error-main { padding: 1.5rem 1rem 3rem; }
-        .error-card { min-height: 0; padding: 2.5rem 1.25rem; }
-        .error-trail { gap: 0.5rem; font-size: 0.72rem; }
-        .error-trail span:nth-child(2) { width: 36px; }
-        .error-actions { width: 100%; }
-        .error-button { width: 100%; }
+        .error-main { padding: 1.5rem 1rem 2rem; }
+        .error-card { padding: 2rem 1.25rem; border-radius: 24px; }
+        .error-trail { gap: 0.55rem; font-size: 0.95rem; }
       }
 
       @media (prefers-reduced-motion: reduce) {
@@ -393,7 +416,7 @@
 
       <main class="error-main">
         <section class="error-card" aria-labelledby="error-title">
-          <div class="error-label"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#compass"></use></svg> Route not found</div>
+          <div class="error-label"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m16.2 7.8-2.1 6.3-6.3 2.1 2.1-6.3 6.3-2.1Z"/></svg> Route not found</div>
           <div class="error-code" aria-hidden="true">404</div>
           <h1 id="error-title">Looks like you took a wrong turn.</h1>
           <p>This page seems to have wandered off. Let’s get you back to something that exists.</p>
@@ -401,8 +424,8 @@
             <span>you are here</span><span></span><span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/></svg> lost</span>
           </div>
           <nav class="error-actions" aria-label="Ways to continue">
-            <a class="error-button primary" href="https://raduq.github.io/"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#house"></use></svg> Back to home</a>
-            <a class="error-button" href="https://raduq.github.io/posts/"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#book-open"></use></svg> Explore the blog</a>
+            <a class="error-button primary" href="https://raduq.github.io/"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-6v-7h-4v7H4a1 1 0 0 1-1-1V10Z"/></svg> Back to home</a>
+            <a class="error-button" href="https://raduq.github.io/posts/"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 7v14m0-14C10.5 5.7 8.4 5 6 5c-1.2 0-2.3.2-3 .5v14c.7-.3 1.8-.5 3-.5 2.4 0 4.5.7 6 2m0-14c1.5-1.3 3.6-2 6-2 1.2 0 2.3.2 3 .5v14c-.7-.3-1.8-.5-3-.5-2.4 0-4.5.7-6 2"/></svg> Explore the blog</a>
           </nav>
         </section>
       </main>

@@ -103,6 +103,11 @@
   font-size: 2rem;
 }
 
+.post-card-icon .icon {
+  width: 2em;
+  height: 2em;
+}
+
 .back-link {
   margin-bottom: 2rem;
 }
