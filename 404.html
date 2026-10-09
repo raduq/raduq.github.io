@@ -30,7 +30,6 @@
     
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lato:wght@400;700&family=Source+Code+Pro:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
 
     
@@ -184,6 +183,12 @@
       }
 
       a { color: inherit; }
+      .icon {
+        display: inline-block;
+        width: 1em;
+        height: 1em;
+        vertical-align: -0.125em;
+      }
       a:focus-visible {
         outline: 3px solid var(--accent);
         outline-offset: 4px;
@@ -388,16 +393,16 @@
 
       <main class="error-main">
         <section class="error-card" aria-labelledby="error-title">
-          <div class="error-label"><i class="fas fa-compass" aria-hidden="true"></i> Route not found</div>
+          <div class="error-label"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#compass"></use></svg> Route not found</div>
           <div class="error-code" aria-hidden="true">404</div>
           <h1 id="error-title">Looks like you took a wrong turn.</h1>
           <p>This page seems to have wandered off. Let’s get you back to something that exists.</p>
           <div class="error-trail" aria-hidden="true">
-            <span>you are here</span><span></span><span><i class="fas fa-map-marker-alt"></i> lost</span>
+            <span>you are here</span><span></span><span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/></svg> lost</span>
           </div>
           <nav class="error-actions" aria-label="Ways to continue">
-            <a class="error-button primary" href="https://raduq.github.io/"><i class="fas fa-home" aria-hidden="true"></i> Back to home</a>
-            <a class="error-button" href="https://raduq.github.io/posts/"><i class="fas fa-book-open" aria-hidden="true"></i> Explore the blog</a>
+            <a class="error-button primary" href="https://raduq.github.io/"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#house"></use></svg> Back to home</a>
+            <a class="error-button" href="https://raduq.github.io/posts/"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#book-open"></use></svg> Explore the blog</a>
           </nav>
         </section>
       </main>

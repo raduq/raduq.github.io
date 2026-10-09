@@ -20,7 +20,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="icon" type="image/png" href="../../images/favicon-32x32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="../../images/favicon-16x16.png" sizes="16x16">
     <link rel="stylesheet" href="../../css/home.css">
@@ -42,7 +41,7 @@
               <span class="theme-toggle-clouds" aria-hidden="true"></span>
               <span class="theme-toggle-thumb" aria-hidden="true"></span>
             </button>
-            <button class="theme-selector" id="themeSelector" type="button" aria-label="Choose color theme" aria-expanded="false" aria-controls="themePalette" title="Choose color theme"><i class="fas fa-palette" aria-hidden="true"></i></button>
+            <button class="theme-selector" id="themeSelector" type="button" aria-label="Choose color theme" aria-expanded="false" aria-controls="themePalette" title="Choose color theme"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#palette"></use></svg></button>
             <div class="theme-palette" id="themePalette" role="group" aria-label="Color themes" hidden>
               <span class="theme-palette-title">Choose a theme</span>
               <div class="theme-options" id="themeOptions"></div>
@@ -54,14 +53,14 @@
 
     <main class="blog-main">
       <div class="container">
-        <a class="back-link" href="../"><i class="fas fa-arrow-left" aria-hidden="true"></i> All posts</a>
+        <a class="back-link" href="../"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#arrow-left"></use></svg> All posts</a>
         <article class="article-card">
           <header class="article-header">
             <span class="eyebrow">Blog post</span>
             <h1>#0 - Hello World</h1>
             <div class="article-meta">
-              <span><i class="fas fa-calendar" aria-hidden="true"></i> <time datetime="2019-06-21">June 21, 2019</time></span>
-              <span><i class="fas fa-clock" aria-hidden="true"></i> One minute read</span>
+              <span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#calendar-days"></use></svg> <time datetime="2019-06-21">June 21, 2019</time></span>
+              <span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#clock-3"></use></svg> One minute read</span>
             </div>
           </header>
           <div class="article-content">
@@ -69,7 +68,7 @@
             <p>🌚</p>
           </div>
         </article>
-        <a class="back-link back-link-bottom" href="../"><i class="fas fa-arrow-left" aria-hidden="true"></i> Back to all posts</a>
+        <a class="back-link back-link-bottom" href="../"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#arrow-left"></use></svg> Back to all posts</a>
       </div>
     </main>
 
@@ -77,9 +76,9 @@
       <div class="container footer-inner">
         <div>© 2026 Raduan Santos</div>
         <div class="socials">
-          <a href="https://github.com/raduq" aria-label="GitHub"><i class="fab fa-github"></i></a>
-          <a href="https://twitter.com/raduq" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-          <a href="https://www.linkedin.com/in/raduan-santos" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="https://github.com/raduq" aria-label="GitHub"><svg class="icon icon-brand" aria-hidden="true"><use href="/images/icons.svg#github"></use></svg></a>
+          <a href="https://x.com/raduq" aria-label="X"><svg class="icon icon-brand" aria-hidden="true"><use href="/images/icons.svg#x"></use></svg></a>
+          <a href="https://www.linkedin.com/in/raduan-santos" aria-label="LinkedIn"><svg class="icon icon-brand" aria-hidden="true"><use href="/images/icons.svg#linkedin"></use></svg></a>
         </div>
       </div>
     </footer>

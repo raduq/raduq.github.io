@@ -5,9 +5,9 @@ function toggleMoreItems() {
   moreItems.classList.toggle('visible');
 
   if (moreItems.classList.contains('visible')) {
-    toggleBtn.innerHTML = '<i class="fas fa-chevron-up"></i> Show less';
+    toggleBtn.innerHTML = '<svg class="icon" aria-hidden="true"><use href="/images/icons.svg#chevron-up"></use></svg> Show less';
   } else {
-    toggleBtn.innerHTML = '<i class="fas fa-chevron-down"></i> Show 6 more companies';
+    toggleBtn.innerHTML = '<svg class="icon" aria-hidden="true"><use href="/images/icons.svg#chevron-down"></use></svg> Show 6 more companies';
   }
 }
 
