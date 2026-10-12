@@ -11,6 +11,22 @@ function toggleMoreItems() {
   }
 }
 
+const themeEasterEgg = document.getElementById('themeEasterEgg');
+const typewriterText = 'clarity';
+let typewriterIndex = 0;
+let typewriterTimer;
+
+function typeThemeWord() {
+  if (!themeEasterEgg) return;
+
+  themeEasterEgg.textContent = typewriterText.slice(0, typewriterIndex + 1);
+  typewriterIndex += 1;
+
+  if (typewriterIndex < typewriterText.length) {
+    typewriterTimer = window.setTimeout(typeThemeWord, 120);
+  }
+}
+
 let avatarClickCount = 0;
 let avatarClickTimer;
 let pixelArtTimer;
@@ -86,7 +102,15 @@ starsToggle.addEventListener('click', () => {
   syncStarsWithTheme();
 });
 document.getElementById('themeToggle').addEventListener('click', syncStarsWithTheme);
-document.addEventListener('DOMContentLoaded', syncStarsWithTheme);
+document.addEventListener('DOMContentLoaded', () => {
+  syncStarsWithTheme();
+
+  if (themeEasterEgg) {
+    themeEasterEgg.textContent = '';
+    typewriterIndex = 0;
+    window.setTimeout(typeThemeWord, 600);
+  }
+});
 
 const angularToggle = document.getElementById('angularToggle');
 const angularStatus = document.getElementById('angularStatus');
